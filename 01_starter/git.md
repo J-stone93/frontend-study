@@ -70,3 +70,6 @@ git pull origin main
 1) VS Code 단축키 정리한 것 받아가기
 2) 파일 만들거나 파일 내용 수정하면서 commit 5번 해보기
 중간중간 git status, git log 명령어도 사용해보기
+
+GUI 툴 연습
+GUI 툴 연습2
