@@ -43,6 +43,7 @@
   <hr>
 
   <!-- thead, tbody(생략되어서 나옴), th-->
+  <!-- table>tbody(생략)>thead순인데 즉 thead의 상위는 table이 아닌 tbody다-->
   <table>
     <!-- table head: 제목 행은 이 안에(잘 안씀)-->
     <thead>
@@ -123,6 +124,34 @@
     </tr>
   </table>
 
+  <br>
+
+  <table>
+    <tr>
+      <td>1</td>
+      <td colspan="2" rowspan="2">2</td>
+      <!-- <td>3</td> -->
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <!-- <td>6</td> -->
+      <!-- <td>7</td> -->
+      <td>8</td>
+    </tr>
+    <tr>
+      <td rowspan="2">9</td>
+      <td>10</td>
+      <td colspan="2">11</td>
+      <!-- <td>12</td> -->
+    </tr>
+    <tr>
+      <!-- <td>13</td> -->
+      <td>14</td>
+      <td>15</td>
+      <td>16</td>
+    </tr>
+  </table>
   <!-- TODO: 나중에 유효성 검사 추가-->
 </body>
 </html>

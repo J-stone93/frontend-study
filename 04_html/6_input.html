@@ -43,6 +43,7 @@
   <input type="checkbox"> Apple
   <input type="checkbox"> Banana
 
+
   <br>
 
   <!--
@@ -56,6 +57,9 @@
   <label>
     <input type="checkbox"> Banana
   </label>
+  <label>
+    <input type="checkbox"> Tomato
+  </label>
   
   <br>
 
@@ -64,6 +68,8 @@
   <label for="apple">Apple</label>
   <input type="checkbox" id="banana">
   <label for="banana">Banana</label>
+  <input type="checkbox" id="painapple">
+  <label for="painapple">painapple</label>
 
   <!-- 
     label 사용 이점(웹 접근성과 관련):
@@ -73,7 +79,7 @@
   -->
 
   <!-- 예제는 편의를 위해 label을 매번 사용하지 않겠지만 
-    실제 개발시 input 요소에 label을 같이 사용해 줄 것! -->
+    실제 개발시 input 요소에 label을 같이 사용해 줄 것! --> 
   
   <br>
 
@@ -87,8 +93,8 @@
 
   <hr>
 
-  <!-- 라이도 버튼-->
-  <!-- type만 썼을 경우-->
+  <!-- 라디오 버튼-->
+  <!-- type만 썼을 경우:선택하면 취소가 안됌-->
   <label>
     <input type="radio"> Apple
   </label>
@@ -105,7 +111,9 @@
   <label>
     <input type="radio" name="fruits"> Banana
   </label>
-
+  <label>
+    <input type="radio" name="fruits"> painapple
+  </label>
   <br>
 
   <!-- name이 다른 경우 그룹화 안됌-->
@@ -130,6 +138,10 @@
   <button tybe="button">
     <b>닫기</b><br>
     테스트
+  </button tybe="button">
+  <button>
+    새로고침<br>
+    <b>새로고침</b>
   </button>
 
   <!-- tybe 속성을 항상 지정하여 브라우저에 버튼 유형을 알려주는게 좋음
@@ -152,6 +164,10 @@
   <label for="birthdaytime">생일(날짜 + 시간):</label>
   <input type="datetime-local" id="birthdaytime">
   <br>
+  <!-- 오늘날짜 +시간 -->
+  <label for="todaytime">금일(날짜 + 시간)</label>
+  <input type="datetime-local" id="todaytime">
+  <br>
   <!-- 시간 -->
   <label for="time">시간 선택:</label>
   <input type="time" id="time">
@@ -168,10 +184,10 @@
   <hr>
 
   <!-- 파일 선택(첨부) -->
-  <label for="myfile">파인 선택:</label>
+  <label for="myfile">파일 선택:</label>
   <input type="file" id="myfile">
   <br>
-  <label for="myfile">여러 파인 선택:</label>
+  <label for="myfile">여러 파일 선택:</label>
   <input type="file" id="myfile" multiple>
   <br>
 
@@ -192,7 +208,7 @@
   <!-- 셀렉트 박스(콤보 박스) -->
   <!-- 속성
     value: 선택한 항목의 값을 서버로 보낼 때 필요
-    selected: 항목을 미리 선택(select,option같이 사용)
+    selected: 항목을 미리 선택,(select,option같이 사용,ul,li랑 같음)
   -->
   <label for="cars">차량 선택</label>
   <select id="cars">
@@ -224,6 +240,7 @@
   <form action="/login" method="get">
     <!-- name 속성:서버로 전달할 때 유니크하게 구분하기 위한 이름 -->
     <input type="text" name="id">
+    <!-- 비밀번호는 type 속성 안에 password로 해야 비공개 된다-->
     <input type="password" name="pw">
     <!-- form 태그 안에 있어야 submit 이벤트 작동 -->
     <button type="submit">로그인</button>
