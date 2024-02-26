@@ -27,8 +27,8 @@
 
     .parent-1 {
       /* width: 300px; */
-      /* max-width: 1000px; */
-      min-width: 1000px;
+      max-width: 1000px;
+      /* min-width: 500px; */
       height: 200px;
       background-color: royalblue;
     }
@@ -52,12 +52,12 @@
     .child-2 {
       /* width: 100px; */
       /* width: 50%;*/
-      /* width: 10em;
-      font-size: 10px; */
-      /* width: 10rem; */
-      width: 50vw;
-      height: 100px;
-      /* height: 60%; */
+      /* width: 10em; */
+      font-size: 10px;
+      width: 10rem;
+      /* width: 50vw; */
+      /* height: 100px; */
+      height: 60%;
       /* height: 50vh; */
       background-color: orange;
     }
@@ -164,6 +164,21 @@
       /* 가로/세로 계산에 padding과 border 값도 포함해서 자동으로 content 영역이 줄어듬 */
       /* 요소에 padding과 border 값이 추가될 때 지정한 크기보다 커지는 것을 방지(요소값이 줄어듬) */
     }
+
+    .icecream-make .icecream {
+      width: 200px;
+      height: 300px;
+      background-color: darkblue;
+      border-radius: 50% 50% 0 0;
+    }
+    .icecream-make .bar {
+      width: 30px;
+      height: 100px;
+      background-color: brown;
+      margin: 0 85px;
+      border-radius: 0 0 50% 50%;
+      
+    }
   </style>
 </head>
 <body>
@@ -222,6 +237,12 @@
   <!-- class는 띄어 쓰기로 여러개 입력 가능하다 선택은 .container-5.compare  -->
   <div class="container-5 compare">hello</div>
   <div class="container-5">hello</div>
+
+  <h4>6. 혼자 연습</h4>
+  <div class="icecream-make">
+    <div class="icecream"></div>
+    <div class="bar"></div>
+  </div>
 </body>
 </html>
 
