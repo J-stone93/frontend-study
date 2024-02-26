@@ -15,7 +15,7 @@
 
   3. 다음 중 가상 클래스 선택자가 아닌 것을 고르세요.
   1) :hover
-  2) :before o
+  2) :before o 가상 요소 선택자 ::before 콜론 두개 써야함
   3) :nth-child(n)
   4) :focus
   5) :last-child
@@ -28,11 +28,11 @@
   6. class 속성값이 box이면서 div인 태그를 선택합니다.
     div.box {}
   7. section 태그의 하위에 있는 모든 div 태그를 선택합니다.
-    section div {}
+    section div {} 
   8. label 태그와 인접한 형제 관계인 input 태그를 선택합니다.
     label + input {}
   9. 링크 대상 경로가 https://www.naver.com인 a 태그의 하위에 있는 span 태그를 모두 선택합니다.
-    a ~ span
+    a[herf="https://www.naver.com"] span {}
 -->
 
 <!DOCTYPE html>
@@ -57,17 +57,18 @@
       background-color: red;
     }
 
-    a ~ span {
+    a span {
       color: royalblue;
       font-size: 50px;
     }
   </style>
 </head>
 <body>
-  <a href="https://www.naver.com">NAVER</a>
-  <span>뉴스</span>
-  <span>날짜</span>
-  <span>쇼핑</span>
+  <a href="https://www.naver.com">NAVER
+    <span>뉴스</span>
+    <span>날짜</span>
+    <span>쇼핑</span>
+  </a>
 
   <br>
 
