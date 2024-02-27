@@ -46,15 +46,25 @@
     .overflow-auto {
       overflow: auto;
     }
-
+    
+    /* 스크롤바 두께 */
     .designed-scroll::-webkit-scrollbar {
-      /* 스크롤바 두께 */
       width: 6px;
     }
+    /* 스크롤바 핸들 */
     .designed-scroll::-webkit-scrollbar-thumb {
-      /* 스크롤바 두께 */
+      /* 스크롤바 색상, 모서리 둥글게 */
       background-color: #cccccc;
       border-radius: 2.5px;
+    }
+    .designed-scroll::-webkit-scrollbar-thumb:hover {
+      background-color: #aaaaaa;
+    }
+    /* 스크롤바 트랙 */
+    .designed-scroll::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+      border-radius: 2.5px;
+
     }
   </style>
 </head>
