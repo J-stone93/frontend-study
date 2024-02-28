@@ -30,6 +30,9 @@
     .justify-content-start {
       justify-content: flex-start;
     }
+    .justify-content-center {
+      justify-content: center;
+    }
     .justify-content-end {
       justify-content: flex-end;
     }
@@ -101,7 +104,13 @@
     <div>2</div>
     <div>3</div>
   </div>
-  <h2>conter; (가운데 정렬)</h2>
+  <h2>center; (가운데로)</h2>
+  <div class="flex-container justify-content-center">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+  <h2>flex-end; (끝점으로 정렬)</h2>
   <div class="flex-container justify-content-end">
     <div>1</div>
     <div>2</div>
@@ -241,7 +250,7 @@
   <!-- Tip! flex를 이용한 완벽한 정중앙 정렬 -->
   <!-- Quiz: 연습을 위해 인라인 스타일로 직접 써볼 것! -->
   <h1>요소의 정중앙 정령</h1>
-  <div class="flex-container h-600px" style="">
+  <div class="flex-container h-600px" style="align-items: center; justify-content: center">
     <div></div>
   </div>
 </body>
