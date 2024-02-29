@@ -76,9 +76,43 @@
     .history > h4 {
       text-align: center;
     }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .menu {
+      list-style: none;
+      display: flex;
+
+      column-gap: 10px;
+    }
+    /* 메뉴 항목 사이에 간겹을 넣는 방법 2가지 
+      1) margin
+      2) gap (in Flexbox 플렉스 안에서 가능)
+    */
+    /* .menu-item + .menu-item {
+      margin-left: 10px;
+    } */
+
   </style>
 </head>
 <body>
+  <!-- flex 내비게이션 -->
+  <nav class="nav-container">
+    <h1>Shoes shop</h1>
+      <!-- 로고와 메뉴 사이를 띄우는 방법(2가지)
+      1) justify-content: space-between;
+      2) flex-grow: 1;
+    -->
+    <!-- <div style="flex-grow: 1;"></div> -->
+    <ul class="menu">
+      <li class="menu-item" style="list-style: none;">Products</il>
+      <li class="menu-item" style="list-style: none;">Services</il>
+    </ul>
+  </nav>
+
   <div class="main-background">
     <h4 class="main-title">Buy our excellent shoes!</h4>
     <p class="main-content">

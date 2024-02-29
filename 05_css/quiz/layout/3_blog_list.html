@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* 공통 스타일은 주로 앞 부분에 작성 */
+    
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-start;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    
+    li {
+      display: flex;
+      background-color: #a7afb3ab;
+      padding: 8px 5px;
+      margin-left: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      width: 800px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    .a {
+      font-size: 20px;
+    }
+    .content-header {
+      display: flex;
+    }
+
+    .blog-content {
+      background-color: #eee;
+      width: 80%;
+      height: 200px;
+    }
+    .blog-img {
+      background-color: royalblue;
+      width: 20%;
+      height: 200px
+    }
+  </style>
+</head>
+<body>
+  <!--  Tip! 레이아웃을 만드는 기본 
+    무엇을 만들던지 레이아웃은 항상 수평(행)으로 자른 후 박스부터 만들고 시작하면 됨
+    그리고 이 박스들을 전부 <div>로 구현해 놓으면 됨(물론 시맨틱 태그도 최대한 활용)
+    그리고 안에 글 넣고 기름 넣고 하면 끝
+
+    이 때 <div>는 블록 요소이기 때문에 위아래로 배치
+    좌우로 나란히 배치하고 싶으면 float(지양함🤬), inline-block(상황에따라😐), Flexbox(좋음😁)
+  -->
+
+  <!-- navber -->
+  <nav>
+    <ul class="navber">
+      <li><a href="https://greenart.co.kr/?src=image&kw=0042AC" target="_blank">컴퓨터</a></li>
+      <li><a href="https://tv.naver.com/nvmovie">영화</a></li>
+      <li><a href="https://www.seogaandcook.com/seogaandcook/">요리</a></li>
+      <li><a href="https://www.instagram.com/yecheolhee/">헬스</a></li>
+    </ul>
+  </nav>
+
+  <!-- blog list -->
+    <div class="container">
+      <div class="blog-content">
+        <div class="content-header">
+          <!-- 프로필 이미지 -->
+          <img src="/05_css/images/logo.png" style="width: 80px; height: 80px; border-radius: 50%;" alt="">
+          <!-- 작성자, 시간 -->
+          <p style="line-height: 25px;">
+            <span>장원석</span> <br>
+            1시간 전
+          </p>
+          
+        </div>
+        <div class="content-body">
+          <!-- 글 제목, 글 내용 -->
+          <h4>가성비 맛집을 발견했어요</h4>
+          <p style="font-size: 14px;">월급 빼고 다 오르는 것 같은 요즘! 식사 한 끼를 할 때 가성비를 꼼꼼하게 따지게 된다. 비싸기만 하고 부실한 식사는 그만! 합리적인 가격은 물론 넉넉한 양으로 입맛을 사로잡는 식당들이 있다.  </p>
+        </div>
+      </div>
+      <div class="blog-img">
+        <img src="https://via.placeholder.com/160x200" alt="">
+        <!-- 샘플 이미지 -->
+      </div>
+    </div>
+  
+</body>
+</html>
