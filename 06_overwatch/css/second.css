@@ -1,0 +1,42 @@
+.container {
+  padding: 50px;
+}
+
+.container .champions {
+  background-color: brown;
+  max-width: 1500px;
+  display: flex;
+  justify-content: center;
+  flex-wrap:wrap ;
+  margin: 0 auto;
+  padding: 20px 20px;
+}
+
+.container .champions .champion {
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  border: 1px solid #fff;
+  margin: 4px;
+  box-sizing: border-box;
+}
+
+.container .champions .champion .image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.container .champions .champion:nth-child(1) .image {background-image: url("../image_lol/Aatrox.png");}
+.container .champions .champion:nth-child(2) .image {background-image: url("../image_lol/Ahri.png");}
+.container .champions .champion:nth-child(3) .image {background-image: url("../image_lol/Akali.png");}
+.container .champions .champion:nth-child(4) .image {background-image: url("");}
+.container .champions .champion:nth-child(5) .image {background-image: url("");}
+.container .champions .champion:nth-child(6) .image {background-image: url("");}
+.container .champions .champion:nth-child(7) .image {background-image: url("");}
+.container .champions .champion:nth-child(8) .image {background-image: url("");}
+.container .champions .champion:nth-child(9) .image {background-image: url("");}
+.container .champions .champion:nth-child(10) .image {background-image: url("");}
+
+.container .champions .champion:nth-child(11) .image {background-image: url("");}
+
