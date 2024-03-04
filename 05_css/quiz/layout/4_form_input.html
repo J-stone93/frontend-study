@@ -68,6 +68,11 @@
     }
     .form-name {
       display: flex;
+    
+    }
+    .first-name:focus, .last-name:focus {
+      border: 2px solid #333
+      
     }
     .first-name, .last-name {
       width: 100%;
@@ -76,6 +81,8 @@
       font-size: 20px;
       border: 2px solid #ccc;
       border-radius: 6px;
+      outline: none;
+      transition: 2s;
     }
     .form-massage {
       width: 100%;
@@ -132,7 +139,7 @@
         </form>
       </div>
       <div class="form-name">
-        <form style="flex: 1">
+        <form style="flex: 1" class="name">
           <p>
             <label for="first-name">First Name</label>
           </p>
