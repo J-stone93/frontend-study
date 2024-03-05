@@ -19,24 +19,87 @@
   border: 1px solid #fff;
   margin: 4px;
   box-sizing: border-box;
+  transition: 0.5;
+  box-shadow: 5px 5px darkred
+}
+
+.container .champions .champion:hover {
+  transform: scale(1.2);
 }
 
 .container .champions .champion .image {
   width: 100%;
   height: 100%;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
 .container .champions .champion:nth-child(1) .image {background-image: url("../image_lol/Aatrox.png");}
 .container .champions .champion:nth-child(2) .image {background-image: url("../image_lol/Ahri.png");}
 .container .champions .champion:nth-child(3) .image {background-image: url("../image_lol/Akali.png");}
-.container .champions .champion:nth-child(4) .image {background-image: url("");}
-.container .champions .champion:nth-child(5) .image {background-image: url("");}
-.container .champions .champion:nth-child(6) .image {background-image: url("");}
-.container .champions .champion:nth-child(7) .image {background-image: url("");}
-.container .champions .champion:nth-child(8) .image {background-image: url("");}
-.container .champions .champion:nth-child(9) .image {background-image: url("");}
-.container .champions .champion:nth-child(10) .image {background-image: url("");}
+.container .champions .champion:nth-child(4) .image {background-image: url("../image_lol/Amumu.png");}
+.container .champions .champion:nth-child(5) .image {background-image: url("../image_lol/Anivia.png");}
+.container .champions .champion:nth-child(6) .image {background-image: url("../image_lol/Bard.png");}
+.container .champions .champion:nth-child(7) .image {background-image: url("../image_lol/Blitzcrank.png");}
+.container .champions .champion:nth-child(8) .image {background-image: url("../image_lol/Brand.png");}
+.container .champions .champion:nth-child(9) .image {background-image: url("../image_lol/Caitlyn.png");}
+.container .champions .champion:nth-child(10) .image {background-image: url("../image_lol/Darius.png");}
 
-.container .champions .champion:nth-child(11) .image {background-image: url("");}
+.container .champions .champion:nth-child(11) .image {background-image: url("../image_lol/Diana.png");}
+.container .champions .champion:nth-child(12) .image {background-image: url("../image_lol/Draven.png");}
+.container .champions .champion:nth-child(13) .image {background-image: url("../image_lol/Evelynn.png");}
+.container .champions .champion:nth-child(14) .image {background-image: url("../image_lol/Ezreal.png");}
+.container .champions .champion:nth-child(15) .image {background-image: url("../image_lol/Galio.png");}
+.container .champions .champion:nth-child(16) .image {background-image: url("../image_lol/Gangplank.png");}
+.container .champions .champion:nth-child(17) .image {background-image: url("../image_lol/Garen.png");}
+.container .champions .champion:nth-child(18) .image {background-image: url("../image_lol/Gnar.png");}
+.container .champions .champion:nth-child(19) .image {background-image: url("../image_lol/Gragas.png");}
+.container .champions .champion:nth-child(20) .image {background-image: url("../image_lol/Graves.png");}
+
+.container .champions .champion:nth-child(21) .image {background-image: url("../image_lol/Heimerdinger.png");}
+.container .champions .champion:nth-child(22) .image {background-image: url("../image_lol/Jax.png");}
+.container .champions .champion:nth-child(23) .image {background-image: url("../image_lol/Jayce.png");}
+.container .champions .champion:nth-child(24) .image {background-image: url("../image_lol/Jhin.png");}
+.container .champions .champion:nth-child(25) .image {background-image: url("../image_lol/Jinx.png");}
+.container .champions .champion:nth-child(26) .image {background-image: url("../image_lol/Kayle.png");}
+.container .champions .champion:nth-child(27) .image {background-image: url("../image_lol/Leona.png");}
+.container .champions .champion:nth-child(28) .image {background-image: url("../image_lol/Lissandra.png");}
+.container .champions .champion:nth-child(29) .image {background-image: url("../image_lol/Lucian.png");}
+.container .champions .champion:nth-child(30) .image {background-image: url("../image_lol/Lulu.png");}
+
+.container .champions .champion:nth-child(31) .image {background-image: url("../image_lol/Lux.png");}
+.container .champions .champion:nth-child(32) .image {background-image: url("../image_lol/Malphite.png");}
+.container .champions .champion:nth-child(33) .image {background-image: url("../image_lol/Malzahar.png");}
+.container .champions .champion:nth-child(34) .image {background-image: url("../image_lol/Maokai.png");}
+.container .champions .champion:nth-child(35) .image {background-image: url("../image_lol/Mordekaiser.png");}
+.container .champions .champion:nth-child(36) .image {background-image: url("../image_lol/Morgana.png");}
+.container .champions .champion:nth-child(37) .image {background-image: url("../image_lol/Nami.png");}
+.container .champions .champion:nth-child(38) .image {background-image: url("../image_lol/Nasus.png");}
+.container .champions .champion:nth-child(39) .image {background-image: url("../image_lol/Nautilus.png");}
+.container .champions .champion:nth-child(40) .image {background-image: url("../image_lol/Neeko.png");}
+
+.container .champions .champion:nth-child(41) .image {background-image: url("../image_lol/Nidalee.png");}
+.container .champions .champion:nth-child(42) .image {background-image: url("../image_lol/Nocturne.png");}
+.container .champions .champion:nth-child(43) .image {background-image: url("../image_lol/Nunu.png");}
+.container .champions .champion:nth-child(44) .image {background-image: url("../image_lol/Pantheon.png");}
+.container .champions .champion:nth-child(45) .image {background-image: url("../image_lol/Rakan.png");}
+.container .champions .champion:nth-child(46) .image {background-image: url("../image_lol/Rammus.png");}
+.container .champions .champion:nth-child(47) .image {background-image: url("../image_lol/Renekton.png");}
+.container .champions .champion:nth-child(48) .image {background-image: url("../image_lol/Rengar.png");}
+.container .champions .champion:nth-child(49) .image {background-image: url("../image_lol/Riven.png");}
+.container .champions .champion:nth-child(50) .image {background-image: url("../image_lol/Rumble.png");}
+
+.container .champions .champion:nth-child(51) .image {background-image: url("../image_lol/Ryze.png");}
+.container .champions .champion:nth-child(52) .image {background-image: url("../image_lol/Sivir.png");}
+.container .champions .champion:nth-child(53) .image {background-image: url("../image_lol/Soraka.png");}
+.container .champions .champion:nth-child(54) .image {background-image: url("../image_lol/Syndra.png");}
+.container .champions .champion:nth-child(55) .image {background-image: url("../image_lol/Thresh.png");}
+.container .champions .champion:nth-child(56) .image {background-image: url("../image_lol/Trundle.png");}
+.container .champions .champion:nth-child(57) .image {background-image: url("../image_lol/Varus.png");}
+.container .champions .champion:nth-child(58) .image {background-image: url("../image_lol/Veigar.png");}
+.container .champions .champion:nth-child(59) .image {background-image: url("../image_lol/Volibear.png");}
+.container .champions .champion:nth-child(60) .image {background-image: url("../image_lol/Xerath.png");}
+
+.container .champions .champion:nth-child(61) .image {background-image: url("../image_lol/Zac.png");}
+.container .champions .champion:nth-child(62) .image {background-image: url("../image_lol/Ziggs.png");}
 
