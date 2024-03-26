@@ -20,19 +20,17 @@
   // 2분기: 1,300
   // 3분기: 1,000
 
-  // const avgSales = ; // 평균 판매량 1166.6666666666667
+  // const avgSales = ; // 평균 판매량 
   // const fourth = prompt('4분기 판매량은?', '0');
   
   
   // 3번 풀이
-  price1 = 1200;
-  price2 = 1300;
-  price3 = 1000;
-  result = (price1 + price2 + price3) / 3;
-  // document.write(result);
-  const price4 = Number(prompt('4분기 판매량은', '0'));
-  result = price4 >= 1166 ? '판매량이 평균 이상입니다' : '판매량이 평균 미달입니다';
+  const avgSales = (1200 + 1300 + 1000) / 3; // 평균 판매량 
+  const fourth = prompt('4분기 판매량은?', '0');
+  result = fourth >= avgSales ? '판매량이 평균 이상입니다.' : '판매량이 평균 미달입니다.';
+  document.write('1~3분기 평균 판매량은' + avgSales, '<br>');
   document.write(result);
+  
 </script>
 </body>
 </html>
