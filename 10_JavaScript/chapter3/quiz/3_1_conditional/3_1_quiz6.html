@@ -11,22 +11,23 @@
     // ('수학': '01', '영어': '02', '국어': '03', '국사': '04', 그 외: '00')
 
     // 풀이6
-    const className = '수학';
+    const className = prompt('과목을 입력해주세요.');
 
     switch (className) {
       case '수학':
-        document.write('01')
+        document.write('01');
         break;
-      case '수학':
-        document.write('01')
+      case '영어':
+        document.write('02');
         break;
-      case '수학':
-        document.write('01')
+      case '국어':
+        document.write('03');
         break;
-      case '수학':
-        document.write('01')
+      case '국사':
+        document.write('04');
         break;
       default:
+        document.write('00')
         break;
     }
   </script>

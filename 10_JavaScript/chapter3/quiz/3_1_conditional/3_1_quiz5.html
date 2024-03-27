@@ -18,10 +18,27 @@
     const num2 = Number(prompt('정수2 입력', '0'));
     const num3 = Number(prompt('정수3 입력', '0'));
 
-    if (condition) {
-      
+    // if (num1 >= num2 && num1 >= num3) {
+    //   document.write('최대값' + num1, '<br>' );
+    //   if (num2 >= num1 && num2 >= num3) {
+    //     document.write('최대값' + num2, '<br>' );
+    //   } else (num3 >= num1 && num3 >= num2) 
+    //     document.write('최대값' + num3, '<br>' );
+    //   }
+    if (num1 >= (num2 + num3)) {
+      document.write('최대값' + num1, '<br>' );
+    } 
+    if (num2 >= (num1 + num3)) {
+      document.write('최대값' + num2, '<br>' );
+    }
+    if (num3 >= (num1 + num2)) {
+      document.write('최대값' + num3, '<br>' );
     }
 
+    const total = (num1 + num2 + num3);
+    document.write('합계' + total, '<br>');
+    const avg = (total / 3);
+    document.write('평균' + avg);
     
   </script>
 </head>
