@@ -17,19 +17,33 @@
 
 
     // 풀이4-1
-    const userHeight = prompt('키를 입력해주세요.');
-    if (userHeight >= 150) {
-      document.write('놀이기구 이용 가능');
-    } else if (userHeight < 150) {
-      const result = confirm('부모님 동반인가요?');
-      if (result) {
-        document.write('좋은 시간 보내렴~');
-      } else {
-        document.write('어른 모시고 다시 오렴~');
-      }
-    }     
+    // const userHeight = prompt('키를 입력해주세요.');
+    // if (userHeight >= 150) {
+    //   document.write('놀이기구 이용 가능');
+    // } else if (userHeight < 150) {
+    //   const result = confirm('부모님 동반인가요?');
+    //   if (result) {
+    //     document.write('좋은 시간 보내렴~');
+    //   } else {
+    //     document.write('어른 모시고 다시 오렴~');
+    //   }
+    // }  
     
-    
+    const height = prompt('신장을 입력하세요.', '0');
+    let msg = '놀이기구 이용 가능';
+
+    if (height < 150) {
+      // const withMom = confirm('부모님과 함께 왔나요?') 
+      // if (withMom) {
+      //   msg = '좋은 시간 보내렴~'
+      // } else {
+      //   msg = '어른 모시고 다시 오렴~'
+      // }
+
+      // 다른 풀이
+      msg = confirm('부모님과 함께 왔나요?') ? '좋은 시간 보내렴~' : '어른 모시고 다시 오렴~' ;
+    }
+    document.write(msg)
     
   </script>
 </head>
