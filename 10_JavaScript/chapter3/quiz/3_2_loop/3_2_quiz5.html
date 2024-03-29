@@ -6,16 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script>
-    // 문제1
-    // for문을 사용하여 10부터 0까지 큰 수부터 작은 수 순으로 출력하세요.
-    // (10, 9, 8, 7... 순으로)
+    // 문제5
+    // while문을 이용하여 0부터 10미만의 정수 중에서 홀수만을 작은 수부터 출력하세요.
 
-
-    // 풀이1
-    for (let i = 10; i >= 0; i--) {
+    // 풀이5
+    let i = 0;
+    while (i < 10) {
+      if (i % 2 !== 0)
       document.write(i, '<br>');
-    }
-    </script>
+      i++;
+    } 
+  </script>
 </head>
 <body>
   
