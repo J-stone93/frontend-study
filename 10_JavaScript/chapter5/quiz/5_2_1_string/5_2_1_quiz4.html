@@ -38,8 +38,36 @@
     //     alert('확장자가 다릅니다.');
     //   }
     // }
-      const fileExt = fileInput.fliles.name.slice(-3);
-      document.write(fileExt);
+      // const fileExt = fliles.name.split('.').slice(-3)
+      // document.write(fileExt);
+
+      const fileName = fileInput.files[0].name;
+      console.log(fileName);
+      const fileExt = fileName.substring(fileName.lastIndexOf('.') + 1).toLowerCase();
+      console.log(fileExt);
+
+      // 하드 코딩 = 관리 불편
+      // if (!(fileExt === 'jpg' || fileExt === 'png' || fileExt === 'gif' )) {
+      //   alert('이미지 파일이 아닙니다.');
+      // }
+
+      // 배열로 관리하면 편함
+      // let valid = false;
+      // for (let i = 0; i < imgFileExt.length; i++) {
+      //   if (fileExt.indexOf(imgFileExt[i]) > -1) {
+      //     valid = true;
+      //     break;
+      //   }
+      // }
+      // if (!valid) {
+      //   alert('이미지 파일이 아닙니다!');
+      // }
+      
+
+      // 개선 코드
+      if (!(imgFileExt.includes(fileExt))) {
+        alert('이미지 파일이 아닙니다!');
+      }
     });
   </script>
 </body>
