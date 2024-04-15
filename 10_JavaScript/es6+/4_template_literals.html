@@ -22,12 +22,12 @@
   console.log(greeting2);
 
   // 선언문
-  function a() {
+  function fun1() {
     
   }
 
   // 표현식
-  const b = function () {
+  const cons1 = function () {
     
   };
 
@@ -64,12 +64,14 @@
     // 템플릿 리터럴을 활용하여 다양한 변수를 결합하고 원하는 출력을 얻도록 코드를 구현해보자.
     // let a = 'Hello,';
     // let b = 'is';
+    let a = 'Hello';
+    let b = 'is';
     let c = 'my';
     let d = 'name';
     let e = 'Kim';
 
     // 예상 결과를 얻기 위해 다음 코드를 수정해보자.
-    let result1 = `Hello, ${c} ${d} is ${e}`;
+    let result1 = `${a} ${c} ${d} ${b} ${e}`;
     
     console.log(result1);
     // 예상 결과: Hello, my name is Kim
