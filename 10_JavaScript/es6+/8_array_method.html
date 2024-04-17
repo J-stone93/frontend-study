@@ -44,6 +44,9 @@
       { firstName: 'Zero', lastName: 'Cho' },
       { firstName: 'Velopert', lastName: 'Kim' }
     ];
+    // const fullName = persons.map(function (name) {
+    //   return name.firstName + ' ' + name.lastName
+    // })
     const fullName = persons.map(name => name.firstName + ' ' + name.lastName);
     console.log(fullName);
 
@@ -108,11 +111,12 @@
     const sum = floatNumbers.reduce((total, num) => total + Math.round(num), 0);
     console.log(sum);
 
-    // 주의! 초기값이 없는 경우 실행 결과가 달라질 수 있음
+    // 주의! 초기값이 없는 경우 실행 결과가 달라질 수 있음(초기값 없으면 0번 인덱스가 초기값으로 들어옴)
     // 15.5 + 2 + 1 + 5
     const sum2 = floatNumbers.reduce((total, num) => total + Math.round(num));
     console.log(sum2);
-
+    const totalPrice = products.reduce((total, product) => total + product.price, 0);
+    console.log(totalPrice);
     // 사용 예: 주로 배열에 담긴 데이터를 합계를 구하는 데 가장 많이 사용
     // (장바구니 기능에서 총 금액 구할 때)
 
