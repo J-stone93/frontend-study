@@ -17,7 +17,7 @@ function PropUse() {
         width={2560}
         height={1400}
         // props로 다른 컴포넌트를 넘기는 것도 가능
-        header={<Header title='헤더입니다'/>}
+        header={<Header title='블로그 헤더입니다'/>}
         footer={<Footer />}
       />
     </>
