@@ -9,6 +9,7 @@ import Clock from './chapter4/Clock';
 import PropUse from './chapter5/5.3/PropsUse';
 import CommentEx from './chapter5/5.6/CommentEx';
 import CommentList from './chapter5/CommentList';
+import Counter from './chapter7/7.2/Counter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -31,7 +32,10 @@ root.render(
   // }}  
   // />
 
-  <CommentList />
+  // <CommentList />
+
+  // 7장
+  <Counter />
 );
 
 // 4장 예제
