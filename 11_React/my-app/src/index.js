@@ -10,6 +10,11 @@ import PropUse from './chapter5/5.3/PropsUse';
 import CommentEx from './chapter5/5.6/CommentEx';
 import CommentList from './chapter5/CommentList';
 import Counter from './chapter7/7.2/Counter';
+import Toggle from './chapter8/8.1/Toggle';
+import MyButton from './chapter8/8.2/MyButton';
+import ConfirmButton from './chapter8/ConfirmButton';
+import Greeting from './chapter9/9.1/Greeting';
+import LoginControl from './chapter9/9.2/LoginControl';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -35,7 +40,16 @@ root.render(
   // <CommentList />
 
   // 7장
-  <Counter />
+  // <Counter />
+
+  // 8장
+  // <Toggle />
+  // <MyButton />
+  // <ConfirmButton />
+
+  // 9장
+  // <Greeting isLoggedIn={true}/>
+  <LoginControl />
 );
 
 // 4장 예제

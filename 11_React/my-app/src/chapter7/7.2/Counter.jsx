@@ -70,7 +70,7 @@ function Counter(props) {
         onClick={() => setColor('red')} */}
       <p style={{ color: color }}>현재 글자색: {color} </p>
       <button
-        onClick={() => setColor(Math.floor(Math.random() * 255) )}
+        onClick={() => setColor('red')}
       >
         글자색 변경</button>
 
