@@ -15,6 +15,10 @@ import MyButton from './chapter8/8.2/MyButton';
 import ConfirmButton from './chapter8/ConfirmButton';
 import Greeting from './chapter9/9.1/Greeting';
 import LoginControl from './chapter9/9.2/LoginControl';
+import Mailbox from './chapter9/9.3/Mailbox';
+import LoginControlRefactoring from './chapter9/9.3/LoginControlRefactoring';
+import MainPage from './chapter9/9.4/MainPage';
+import LandingPage from './chapter9/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -49,7 +53,12 @@ root.render(
 
   // 9장
   // <Greeting isLoggedIn={true}/>
-  <LoginControl />
+  // <LoginControl />
+  // <Mailbox unreadMessages={['React', 'Re: React', 'Re:Re: React']}/>
+  // <Mailbox unreadMessages={[]}/>
+  // <LoginControlRefactoring />
+  // <MainPage />
+  <LandingPage />
 );
 
 // 4장 예제
