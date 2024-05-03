@@ -23,6 +23,11 @@ import NumberList from './chapter10/10.1/NumberList';
 import ListKey from './chapter10/10.2/ListKey';
 import AttendanceBook from './chapter10/AttendanceBook';
 import NameForm from './chapter11/11.2/NameForm';
+import EssayForm from './chapter11/11.3/EssayForm';
+import FlavorForm from './chapter11/11.3/FlavorForm';
+import Reservation from './chapter11/11.4/Reservation';
+import ReservationRefactoring from './chapter11/11.4/ReservationRefactoring';
+import SignUp from './chapter11/SignUp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -70,7 +75,12 @@ root.render(
   // <AttendanceBook />
 
   // 11장 예제
-  <NameForm />
+  // <NameForm />
+  // <EssayForm />
+  // <FlavorForm />
+  // <Reservation />
+  // <ReservationRefactoring />
+  <SignUp />
 );
 
 // 4장 예제
