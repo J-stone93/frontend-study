@@ -19,29 +19,39 @@ import { useState } from "react";
 // 1) form 태그 및 submit 이벤트를 사용해도 되고 button 태그의 click 이벤트를 사용해도 됨
 // 2) 각각의 state를 여러 개 만들어도 되고 객체 형태로 한번에 관리해도 됨
 
-function SignUp() {
-  const [name, setName] = useState('');
-  const handleChangeName = (e) => {
-    setName(e.target.value);
-  };
+function SignUpCopy() {
+  const [inputs, setInputs] = useState({
+    name: '',
+    gender: '남자',
+  });
+  const { name, gender } = inputs;
 
-  const [gender, setGender] = useState('남자');
-  const handleChangeGender = (e) => {
-    setGender(e.target.value);
-  };
+  const handleInputChange = (e) => {
+    console.log(e.target);
 
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+    [name]: value
+    })
+  };
+  
   const hadleClick = () => {
     alert(`이름: ${name}, 성별:${gender}`)
   };
 
-  
   return (
     <from>
-      <input type="text" value={name} onChange={handleChangeName}/>
+      <input 
+      type="text" 
+      name="name"
+      value={name} onChange={handleInputChange}/>
 
       <br />
 
-      <select value={gender} onChange={handleChangeGender}>
+      <select
+      name="gender" 
+      value={gender} onChange={handleInputChange}>
         <option value="남자">남자</option>
         <option value="여자">여자</option>
       </select>
@@ -53,4 +63,4 @@ function SignUp() {
   );
 };
 
-export default SignUp;
+export default SignUpCopy;

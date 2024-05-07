@@ -28,6 +28,7 @@ import FlavorForm from './chapter11/11.3/FlavorForm';
 import Reservation from './chapter11/11.4/Reservation';
 import ReservationRefactoring from './chapter11/11.4/ReservationRefactoring';
 import SignUp from './chapter11/SignUp';
+import SignUpCopy from './chapter11/SignUpCopy';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -80,7 +81,8 @@ root.render(
   // <FlavorForm />
   // <Reservation />
   // <ReservationRefactoring />
-  <SignUp />
+  // <SignUp />
+  <SignUpCopy />
 );
 
 // 4장 예제
