@@ -20,6 +20,7 @@ import { useState } from "react";
 // 2) 각각의 state를 여러 개 만들어도 되고 객체 형태로 한번에 관리해도 됨
 
 function SignUp() {
+  // 여러 개의 state로 관리 시
   const [name, setName] = useState('');
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -30,26 +31,40 @@ function SignUp() {
     setGender(e.target.value);
   };
 
-  const hadleClick = () => {
-    alert(`이름: ${name}, 성별:${gender}`)
+  // const hadleClick = () => {
+  //   alert(`이름: ${name}, 성별:${gender}`)
+  // };
+
+  const hadleSubmit = (e) => {
+    e.preventDefault();
+    alert(`이름: ${name}, 성별:${gender}`);
   };
 
-  
   return (
-    <from>
-      <input type="text" value={name} onChange={handleChangeName}/>
+    <form onSubmit={hadleSubmit}>
+      <label>
+        이름:
+        {/* value값에 name을 동기화 시켜줘야 오류 발생이 적음 */}
+        <input type="text" value={name} onChange={handleChangeName} />
+      </label>
 
       <br />
 
-      <select value={gender} onChange={handleChangeGender}>
-        <option value="남자">남자</option>
-        <option value="여자">여자</option>
-      </select>
+      <label>
+        성별:
+        {/* value값에 gender을 동기화 시켜줘야 오류 발생이 적음 */}
+        <select value={gender} onChange={handleChangeGender}>
+          <option>남자</option>
+          <option>여자</option>
+        </select>
+      </label>
 
       <br />
-
-      <button onClick={hadleClick}>가입하기</button>
-    </from>
+      
+      <div>
+        <button type="submit">가입하기</button>
+      </div>
+    </form>
   );
 };
 

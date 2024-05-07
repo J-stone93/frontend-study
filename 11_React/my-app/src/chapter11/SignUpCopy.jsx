@@ -24,42 +24,62 @@ function SignUpCopy() {
     name: '',
     gender: '남자',
   });
-  const { name, gender } = inputs;
+  const { name, gender } = inputs; //구조 분해 할당 키값이랑 변수명이랑 동일해야함
 
   const handleInputChange = (e) => {
     console.log(e.target);
 
     const { name, value } = e.target;
+    console.log(name);
+    console.log(value);
+
+    // 방법1
+    // 새로운 객체 생성
+    const copyObj = { ...inputs };
+    copyObj[name] = value;
+    setInputs(copyObj);
+
+    // 방법2
     setInputs({
-      ...inputs,
-    [name]: value
+      ...inputs, // 기존의 inputs 객체를 본사한 뒤
+      [name]: value // name 값을 키로 갖는 속성을 동적으로 정의
     })
   };
-  
+
   const hadleClick = () => {
     alert(`이름: ${name}, 성별:${gender}`)
   };
 
   return (
-    <from>
-      <input 
-      type="text" 
-      name="name"
-      value={name} onChange={handleInputChange}/>
+    <form>
+      <label>
+        이름:
+        <input
+          type="text"
+          // 키값이랑 동일하게 값을 넣어줌
+          name="name"
+          value={name}
+          onChange={handleInputChange} />
+      </label>
 
       <br />
 
-      <select
-      name="gender" 
-      value={gender} onChange={handleInputChange}>
-        <option value="남자">남자</option>
-        <option value="여자">여자</option>
-      </select>
+      <label>
+        성별:
+        <select
+          // 키값이랑 동일하게 값을 넣어줌
+          name="gender"
+          value={gender}
+          onChange={handleInputChange}>
+          <option>남자</option>
+          <option>여자</option>
+        </select>
+      </label>
 
       <br />
 
       <button onClick={hadleClick}>가입하기</button>
-    </from>
+    </form>
   );
 };
 
