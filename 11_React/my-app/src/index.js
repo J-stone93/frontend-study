@@ -29,6 +29,12 @@ import Reservation from './chapter11/11.4/Reservation';
 import ReservationRefactoring from './chapter11/11.4/ReservationRefactoring';
 import SignUp from './chapter11/SignUp';
 import SignUpCopy from './chapter11/SignUpCopy';
+import TextInputWithFocusButton from './chapter7/7.6/TextInputWithFocusButton';
+import FileInput from './chapter11/11.3/FileInput';
+import UnitCounter from './chapter12/UnitCounter';
+import UnitCalculator from './chapter12/UnitCalculator';
+import WelcomeDialog from './chapter13/13.1.1.1/WelcomeDialog';
+import SplitPaneSection from './chapter13/13.1.1.2/SplitPaneSection';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 // Root DOM Node에 리액트 컴포넌트를 렌더링 하도록 하는 함수(React 엘리먼트를 DOM 엘리먼트로 렌더링하는 역할)
@@ -55,6 +61,7 @@ root.render(
 
   // 7장 예제
   // <Counter />
+  // <TextInputWithFocusButton />
 
   // 8장 예제
   // <Toggle />
@@ -82,7 +89,15 @@ root.render(
   // <Reservation />
   // <ReservationRefactoring />
   // <SignUp />
-  <SignUpCopy />
+  // <SignUpCopy />
+  // <FileInput />
+
+  // 12장 예제
+  // <UnitCalculator />
+
+  // 13장 예제
+  // <WelcomeDialog />
+  <SplitPaneSection />
 );
 
 // 4장 예제

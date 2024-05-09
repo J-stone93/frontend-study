@@ -147,7 +147,6 @@ function App() {
         }}
         disabled={input}
         >
-          포스트 등록
         </button>
 
 
