@@ -68,7 +68,7 @@ function App() {
     // (편법)
     // setTodos([...todos, todo]);
 
-    // 방법2 - 배열의 내장 함수 이용 *****************
+    // 방법2 - 배열의 내장 함수 이용 ***************** concat은 배열에 객체를 추가하고 새로운 배열로 반환됨
     setTodos(todos.concat(todo));
 
 
@@ -83,7 +83,7 @@ function App() {
     // copyTodos.splice(targerIndex, 1);
     // setTodos(copyTodos);
 
-    // 방법2 - 배열의 내장 함수 이용 *****************
+    // 방법2 - 배열의 내장 함수 이용 ***************** filter함수를 이용해 !==로 선택한 것을 제외하고 반환 시켜줌
     setTodos(todos.filter(todo => todo.id !== id));
 
   };
