@@ -1,5 +1,5 @@
-import { MdCheckBoxOutlineBlank, MdEdit, MdRemoveCircleOutline } from "react-icons/md";
-import { styled } from "styled-components"
+import { MdCheckBox, MdCheckBoxOutlineBlank, MdEdit, MdRemoveCircleOutline } from "react-icons/md";
+import { css, styled } from "styled-components"
 
 const TodoListItemWrapper = styled.div`
   padding: 1rem;
@@ -23,12 +23,21 @@ const Checkbox = styled.div`
 
   svg {
     font-size: 1.5rem;
+    color: ${props => props.done && '#22b8cf'}
   }
 `;
 
 const Text = styled.div`
   margin-left: 0.5rem;
   flex: 1; // 차지할 수 있는 영역 모두 차지
+
+  /* 조건부 스타일링 시 여러 개의 css를 설정할 때는 아래와 같이 사용 */
+  ${props => props.done &&
+    css`
+      color: #adb5bd;
+      text-decoration: line-through;
+    `
+  }
 `;
 
 const Remove = styled.div`
@@ -59,17 +68,21 @@ const Edit = styled.div`
 // 각 할 일 항목에 대한 정보를 보여주는 컴포넌트
 // todo 객체를 props로 받아와서 상태에 따라 다른 스타일의 UI를 보여줌
 
-function TodoListItem() {
+function TodoListItem( { todo: { id, text, done }, onRemove } ) {
+  
+
   return (
     <TodoListItemWrapper>
-      <Checkbox>
-        <MdCheckBoxOutlineBlank />
+      <Checkbox done={done}>
+        {done ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}
       </Checkbox>
-      <Text>할 일</Text>
+      <Text done={done}>{text}</Text>
       <Edit>
         <MdEdit />
       </Edit>
-      <Remove>
+      <Remove onClick={() => { //onClick={onRemove(id)}로 넘기면 바로 실행 되므로 함수 실행 후 함수 넣어줘야함
+        onRemove(id);
+      }}>
         <MdRemoveCircleOutline />
       </Remove>
     </TodoListItemWrapper>
