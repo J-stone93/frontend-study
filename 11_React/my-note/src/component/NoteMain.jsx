@@ -29,7 +29,7 @@ const NoteMainWarpper = styled.div`
 function NoteMain() {
   return (
     <>
-    <Header>You can do it</Header>
+    <Header>You can do it🏋️‍♂️</Header>
     <NoteMainWarpper>
       <NoteInput />
     </NoteMainWarpper>
