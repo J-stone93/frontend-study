@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import NoteInput from "./NoteInput";
+
 
 const Header = styled.div`
   width: 600px;
@@ -29,7 +31,7 @@ function NoteMain() {
     <>
     <Header>You can do it</Header>
     <NoteMainWarpper>
-
+      <NoteInput />
     </NoteMainWarpper>
     
     </>
