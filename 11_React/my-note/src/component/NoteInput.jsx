@@ -1,30 +1,30 @@
 import styled from "styled-components";
 import { FiPlusCircle } from "react-icons/fi";
+import { FaPlusCircle } from "react-icons/fa";
+import { useState } from "react";
 
 const Wrapper = styled.form`
   display: flex;
-  background: #495057;
-  border-radius: 10px 10px 0 0 ;
+  background: #acafb3;
 `;
 
 const Input = styled.input`
   background: none;
   outline: none;
   border: none;
-  border-radius: 10px;
-  padding: 12px;
+  padding: 10px;
   font-size: 18px;
   line-height: 1.5;
   color: white;
   flex: 1; 
   &::placeholder {
-    color: #dee2e6;
+    color: #12171b;
   }
 `;
 
 const Button = styled.button`
   border: none;
-  background: #868e96;
+  background: #acafb3;
   color: white;
   padding: 0 1rem;
   font-size: 1.5rem;
@@ -32,21 +32,36 @@ const Button = styled.button`
   align-items: center;
   cursor: pointer;
   transition: 0.2s background ease-in;
-  border-radius: 0 10px 0 0;
-
   &:hover {
-    background: #adb5bd;
+    /* background: #adb5bd; */
+    color: black;
   }
 `;
 
-function NoteInput() {
+function NoteInput(props) {
+  const { onInsert } = props;
+
+  const [value, setValue] = useState('');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onInsert(value);
+    setValue('');
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onSubmit={handleSubmit}>
       <Input 
       type="text"
+      value={value}
       placeholder="운동 부위를 입력하세요"
+      onChange={handleChange}
       />
-      <Button>
+      <Button type="submit">
       <FiPlusCircle />
       </Button>
     </Wrapper>

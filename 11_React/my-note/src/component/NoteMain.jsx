@@ -5,9 +5,9 @@ import NoteInput from "./NoteInput";
 const Header = styled.div`
   width: 600px;
   height: 70px;
-  margin: 100px auto 0;
+  margin: 50px auto 0;
   background: white;
-  border: 3px solid white;
+  border: 3px solid #acafb3;
   border-radius: 10px;
   /* color: white; */
   text-align: center;
@@ -17,23 +17,42 @@ const Header = styled.div`
 `;
 
 const NoteMainWarpper = styled.div`
-  width: 500px;
-  height: 400px;
-  margin: 40px auto 0;
+  width: 450px;
+  height: 700px;
+  margin: 50px auto 0;
   background: white;
   border-radius: 10px;
 `;
 
+const Title = styled.div`
+  background: white;
+  color: #000000;
+  height: 4rem;
+  font-size: 1.5rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Content = styled.div`
+  background: white;
+`;
 
 
-function NoteMain() {
+
+function NoteMain(props) {
+  const { children } = props
+
   return (
     <>
-    <Header>You can do it🏋️‍♂️</Header>
-    <NoteMainWarpper>
-      <NoteInput />
-    </NoteMainWarpper>
-    
+      <Header>You can do it🏋️‍♂️</Header>
+      <NoteMainWarpper>
+        <Title>주 단위 운동 스케줄</Title>
+        <Content>{children}</Content>
+        {/* <NoteInput /> */}
+      </NoteMainWarpper>
+
     </>
   );
 };
