@@ -8,6 +8,7 @@ import { useState, useRef } from 'react';
 import NoteInput from './component/NoteInput';
 import NoteList from './component/NoteList';
 import { v4 as uuidv4 } from "uuid";
+import NoteEdit from './component/NoteEdit';
 
 const GlobalStyle = createGlobalStyle`
   /* reset css */
@@ -44,23 +45,51 @@ function App() {
       text: "등",
       done: true
     }
-
   ]);
+
+  const [showNoteEdit, setShowNoteEdit] = useState(false); 
+  const [editTodo, setEditTodo] = useState({});
+
+  const handleChange = (e) => { 
+    setEditTodo({
+      ...editTodo,
+      text: e.target.value
+    })
+  };
+  const handleEdit = (id) => {
+    setEditTodo(todos.find(todo => todo.id === id));
+    setShowNoteEdit(true);
+  };
+  const handleClose = () => {
+    setShowNoteEdit(false);
+  };
+  const handleInput = () => {
+    setTodos(todos.map(todo => todo.id === editTodo.id ? editTodo : todo));
+    handleClose();
+  };
+
   const nextId = useRef(5);
+
   const handleInsert = (text) => {
     const todo = {
       // id: nextId.current,
       id: uuidv4(),
       text,
-      done: false
+      done: true
     }
     setTodos(todos.concat(todo));
     nextId.current += 1; 
   };
 
+  const handleToggle = (id) => {
+    setTodos(todos.map((todo) => todo.id === id ? { ...todo, done: !todo.done } : todo));
+  };
+
   const handleRemove = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
+
+
 
   return (
     <>
@@ -70,9 +99,21 @@ function App() {
         <NoteInput onInsert={handleInsert}/>
         <NoteList 
           todos={todos}
-          onRemove={handleRemove} 
+          onEdit={handleEdit}
+          onRemove={handleRemove}
+          onToggle={handleToggle}
         />
       </NoteMain>
+
+      {showNoteEdit &&
+        <NoteEdit
+          offClose={handleClose}
+          onInput={handleInput}
+        >
+          <input style={{ border : 'none', outline : 'none', fontSize : '22px', fontWeight: '500'}} 
+          type="text" size={20} value={editTodo.text} onChange={handleChange}/>
+        </NoteEdit>
+      }
     </>
   );
 }

@@ -47,17 +47,16 @@ const Edit = styled.div`
 `;
 
 function NoteListItem(props) {
-  const { todo: { id, text } } = props;
-  const { onRemove } = props;
+  const { todo: { id, text, done }, onRemove, onToggle, onEdit } = props;
 
 
   return (
     <NoteListItemWrapper>
-      <Checkbox>
-        <VscThumbsup />
+      <Checkbox done={done} onClick={() => onToggle(id)}>
+        {done ? <VscThumbsup /> : <VscThumbsupFilled />}
       </Checkbox>
       <Text>{text}</Text>
-      <Edit>
+      <Edit onClick={() =>onEdit(id)}>
         <VscEdit />
       </Edit>
       <Remove onClick={() => {

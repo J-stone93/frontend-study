@@ -8,13 +8,13 @@ const NoteListWrapper = styled.div`
 `;
 
 function NoteList(props) {
-  const { todos, onRemove } = props
+  const { todos, onRemove, onToggle, onEdit } = props
 
   return (
     <NoteListWrapper>
 
       {todos.map((todo) => {
-        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove}/>;
+        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle} onEdit={onEdit}/>;
       })}
 
     </NoteListWrapper>
