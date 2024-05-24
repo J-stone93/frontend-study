@@ -22,6 +22,7 @@ const NoteMainWarpper = styled.div`
   margin: 50px auto 0;
   background: white;
   border-radius: 10px;
+  border: 2px solid black;
 `;
 
 const Title = styled.div`

@@ -28,22 +28,23 @@ function App() {
   // id, 내용, 완료여부
   // TodoList에 props로 전달
   const [todos, setTodos] = useState([
-    // {
-    //   id: 1,
-    //   text: '수업 교안 작성하기',
-    //   done: true
-    // },
-    // {
-    //   id: 2,
-    //   text: 'react 복습하기',
-    //   done: true
-    // },
-    // {
-    //   id: 3,
-    //   text: '자바 stream 정리하기',
-    //   done: false
-    // },
+    {
+      id: 1,
+      text: '수업 교안 작성하기',
+      done: true
+    },
+    {
+      id: 2,
+      text: 'react 복습하기',
+      done: true
+    },
+    {
+      id: 3,
+      text: '자바 stream 정리하기',
+      done: false
+    },
   ]);
+
 
   const [showModal, setShowModal] = useState(false); // 모달 상태
   const [editTodo, setEditTodo] = useState({}); // 현재 수정할 todo 상태

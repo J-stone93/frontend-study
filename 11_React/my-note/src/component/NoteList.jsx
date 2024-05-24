@@ -1,22 +1,26 @@
 import styled from "styled-components";
 import NoteListItem from "./NoteListItem";
+import NoteListInfo from "./NoteListInfo";
+import { Outlet } from "react-router-dom";
 
 const NoteListWrapper = styled.div`
   min-height: 320px;
-  max-height: 513px; // 57px * 9개 항목
+  max-height: 700px; 
   overflow-y: auto;
 `;
 
 function NoteList(props) {
-  const { todos, onRemove, onToggle, onEdit } = props
+  const { todos, onRemove, onToggle, onEdit, onClick, onTextToggle } = props
 
   return (
     <NoteListWrapper>
 
       {todos.map((todo) => {
-        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle} onEdit={onEdit}/>;
+        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
+                onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle}/>;
       })}
-
+      {/* <NoteListInfo /> */}
+      {/* <Outlet /> */}
     </NoteListWrapper>
   );
 };

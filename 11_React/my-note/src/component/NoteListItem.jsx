@@ -12,6 +12,7 @@ const Text = styled.div`
   flex: 1;
   font-size: 18px;
   font-weight: 550;
+  cursor: pointer;
 `;
 
 const Checkbox = styled.div`
@@ -47,16 +48,19 @@ const Edit = styled.div`
 `;
 
 function NoteListItem(props) {
-  const { todo: { id, text, done }, onRemove, onToggle, onEdit } = props;
+  const { todo: { id, text, done }, onRemove, onToggle, onEdit, onClick, onTextToggle } = props;
 
+  const handleClick = () => {
+
+  }
 
   return (
     <NoteListItemWrapper>
       <Checkbox done={done} onClick={() => onToggle(id)}>
         {done ? <VscThumbsup /> : <VscThumbsupFilled />}
       </Checkbox>
-      <Text>{text}</Text>
-      <Edit onClick={() =>onEdit(id)}>
+      <Text onClick={() => onTextToggle()}>{text}</Text>
+      <Edit onClick={() => onEdit(id)}>
         <VscEdit />
       </Edit>
       <Remove onClick={() => {
@@ -65,6 +69,8 @@ function NoteListItem(props) {
         <VscTrash />
       </Remove>
     </NoteListItemWrapper>
+
+    // <Outlet />
   );
 };
 
