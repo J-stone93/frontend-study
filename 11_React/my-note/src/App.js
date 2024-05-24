@@ -139,7 +139,10 @@ function App() {
 
       {/* <BrowserRouter>
         <Routes>
-          <Route path='new' element={<NoteListInfo />}></Route>
+          <Route path='/' element={<NoteMain />}>
+            <Route path='new' element={<NoteListInfo />}></Route>
+            <Route path='detail' element={<NoteListInfo />}></Route>
+          </Route>
         </Routes>
       </BrowserRouter> */}
     </>
