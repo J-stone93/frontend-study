@@ -9,18 +9,42 @@ const NoteListWrapper = styled.div`
   overflow-y: auto;
 `;
 
+const Title = styled.h1`
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+
+  & + & {
+    border-top: none;
+  }
+`;
+
 function NoteList(props) {
-  const { todos, onRemove, onToggle, onEdit, onClick, onTextToggle } = props
+  const { todos, onRemove, onToggle, onEdit, onClick, onTextToggle, offClose, onInput, showText } = props
+
+  const falseTodos = todos.filter((todo) => !todo.done);
+  const trueTodos = todos.filter((todo) => todo.done);
 
   return (
     <NoteListWrapper>
 
-      {todos.map((todo) => {
+      <Title>할 부위</Title>
+      {falseTodos.map((todo) => {
         return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
-                onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle}/>;
+        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} offClose={offClose} showText={showText}/>;
       })}
+      <Title>완료 부위</Title>
+      {trueTodos.map((todo) => {
+        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
+        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} onInput={onInput} showText={showText}/>;
+      })}
+
       {/* <NoteListInfo /> */}
       {/* <Outlet /> */}
+
     </NoteListWrapper>
   );
 };

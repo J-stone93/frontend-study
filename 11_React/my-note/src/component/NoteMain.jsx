@@ -30,10 +30,11 @@ const Title = styled.div`
   color: #000000;
   height: 4rem;
   font-size: 1.5rem;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid black;
 `;
 
 const Content = styled.div`

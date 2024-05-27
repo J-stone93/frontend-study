@@ -4,7 +4,7 @@ import NoteMain from './component/NoteMain';
 import { createGlobalStyle } from "styled-components";
 import reset, { Reset } from "styled-reset";
 import styled from "styled-components";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import NoteInput from './component/NoteInput';
 import NoteList from './component/NoteList';
 import { v4 as uuidv4 } from "uuid";
@@ -27,26 +27,26 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: "하체",
-      done: true
-    },
-    {
-      id: 2,
-      text: "어깨",
-      done: true
-    },
-    {
-      id: 3,
-      text: "가슴",
-      done: true
-    },
-    {
-      id: 4,
-      text: "등",
-      done: true
-    }
+    // {
+    //   id: 1,
+    //   text: "하체",
+    //   done: false
+    // },
+    // {
+    //   id: 2,
+    //   text: "어깨",
+    //   done: false
+    // },
+    // {
+    //   id: 3,
+    //   text: "가슴",
+    //   done: false
+    // },
+    // {
+    //   id: 4,
+    //   text: "등",
+    //   done: false
+    // }
   ]);
 
   const [showNoteEdit, setShowNoteEdit] = useState(false);
@@ -78,7 +78,7 @@ function App() {
       // id: nextId.current,
       id: uuidv4(),
       text,
-      done: true
+      done: false
     }
     setTodos(todos.concat(todo));
     nextId.current += 1;
@@ -93,15 +93,25 @@ function App() {
   };
   
   const handleClick = () => {
-    setShowtext(true);
+    setShowText(true);
   };
   
   // 텍스트창
-  const [showtext, setShowtext] = useState(false);
+  const [showText, setShowText] = useState(false);
 
   const handleTextToggle = (id) => {
-    setShowtext(!showtext);
+    setShowText(!showText);
   };
+
+  // 로컬 스토리지에서 가져오기
+  useEffect(() => {
+    const dbTodos = JSON.parse(localStorage.getItem('todos')) || []; // 초기에 'todos'가 없으면 null을 반환함
+    setTodos(dbTodos);
+  }, []);
+
+  useEffect(() => {  
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   return (
     <>
@@ -116,12 +126,17 @@ function App() {
           onToggle={handleToggle}
           onClick={handleClick}
           onTextToggle={handleTextToggle}
+          offClose={handleClose}
+          onInput={handleInput}
+          showText={showText}
         >
         </NoteList>
-      {showtext &&
+      {showText &&
         <NoteListInfo
           offClose={handleClose}
           onInput={handleInput}
+          onInsert={handleInsert}
+          todos={todos}
         >
         </NoteListInfo>
       }
@@ -140,7 +155,6 @@ function App() {
       {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<NoteMain />}>
-            <Route path='new' element={<NoteListInfo />}></Route>
             <Route path='detail' element={<NoteListInfo />}></Route>
           </Route>
         </Routes>

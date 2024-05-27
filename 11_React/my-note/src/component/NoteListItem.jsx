@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { VscThumbsup, VscThumbsupFilled, VscTrash, VscEdit } from "react-icons/vsc";
+import NoteListInfo from "./NoteListInfo";
+// import { Outlet } from "react-router-dom";
 
 const NoteListItemWrapper = styled.div`
   padding: 1rem;
@@ -26,40 +28,45 @@ const Remove = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  /* color: #ff6b6b; */
+  color: #3792e7;
   cursor: pointer;
-/* 
   &:hover {
-    color: #ff8787;
-  } */
+    color: #5ecff1;
+  }
 `;
 
 const Edit = styled.div`
   display: flex;
   align-items: center;
   font-size: 1.5rem;
-  /* color: #ff6b6b; */
+  color: #3792e7;
   cursor: pointer;
   margin-right: 10px;
-
-  /* &:hover {
-    color: #ff8787;
-  } */
+  &:hover {
+    color: #5ecff1;
+  }
 `;
 
 function NoteListItem(props) {
-  const { todo: { id, text, done }, onRemove, onToggle, onEdit, onClick, onTextToggle } = props;
+  const { todo: { id, text, done }, onRemove, onToggle, onEdit, onClick, onTextToggle, showText, offClose, onInput } = props;
 
-  const handleClick = () => {
-
-  }
+  // const handleClick = () => {
+  //   onTextToggle(id)
+  //   {showText}
+  // }
 
   return (
     <NoteListItemWrapper>
       <Checkbox done={done} onClick={() => onToggle(id)}>
-        {done ? <VscThumbsup /> : <VscThumbsupFilled />}
+        {done ? <VscThumbsupFilled /> : <VscThumbsup />}
       </Checkbox>
-      <Text onClick={() => onTextToggle()}>{text}</Text>
+      <Text
+        onClick={() => {onTextToggle()}}
+        // onClick={() => {handleClick}}
+        // onClick2={() => showText}
+        >
+          {text}</Text>
+          {/* {showText ?  <NoteListInfo /> : null} */}
       <Edit onClick={() => onEdit(id)}>
         <VscEdit />
       </Edit>
@@ -70,7 +77,6 @@ function NoteListItem(props) {
       </Remove>
     </NoteListItemWrapper>
 
-    // <Outlet />
   );
 };
 

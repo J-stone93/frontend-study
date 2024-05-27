@@ -45,14 +45,14 @@ function NoteEdit(props) {
   return (
     <Background>
       <NoteEditWarpper>
-        <div className="header">
-          <VscCheck onClick={onInput}/>
-          <VscChromeClose onClick={offClose}/>
-        </div>
         <Body>
           {children}
           {/* <button onClick={onInput}>확인</button> */}
         </Body>
+        <div className="header">
+          <VscCheck onClick={onInput}/>
+          <VscChromeClose onClick={offClose}/>
+        </div>
       </NoteEditWarpper>
     </Background>
   );

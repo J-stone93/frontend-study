@@ -61,7 +61,9 @@ function NoteInput(props) {
       placeholder="운동 부위를 입력하세요"
       onChange={handleChange}
       />
-      <Button type="submit">
+      <Button 
+      type="submit"
+      disabled={!value}>
       <FiPlusCircle />
       </Button>
     </Wrapper>
