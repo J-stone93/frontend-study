@@ -10,24 +10,34 @@ const Background = styled.form`
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  line-height: 200px;
-
+  border-top: 2px solid black;
   `;
-const Input = styled.input`
+
+const Input = styled.textarea`
   background: none;
   outline: none;
   border: none;
+  resize: none;
   padding: 10px;
   font-size: 18px;
   line-height: 1.5;
   flex: 1;
   `;
 
+const Button = styled.button`
+  border: none;
+  background: #acafb3;
+  color: white;
+  &:hover {
+    color: black;
+  }
+  `;
+
 
 
 
 function NoteListInfo(props) {
-  const { todos: { id, text, done } } = props;
+  const { todos: { id, text, done },onInfo } = props;
 
   const [value, setValue] = useState('');
 
@@ -41,20 +51,19 @@ function NoteListInfo(props) {
     const newText = value.replace("\r\n", "br");
     // onInsert(newText);
     setValue('');
-    // onInsert(value);
+    // onInfo(value);
   };
 
   return (
     <Background>
-      <p></p>
       <Input
         onChange={handleChange}
         value={value}
         placeholder="루틴을 입력하세요"
       />
-      <button
+      <Button
         onClick={handleCilck}
-      ><FiPlusCircle /></button>
+      ><FiPlusCircle /></Button>
     </Background>
   );
 };

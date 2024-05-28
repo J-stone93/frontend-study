@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { css, styled } from "styled-components";
 import { VscThumbsup, VscThumbsupFilled, VscTrash, VscEdit } from "react-icons/vsc";
 import NoteListInfo from "./NoteListInfo";
 // import { Outlet } from "react-router-dom";
@@ -15,7 +15,14 @@ const Text = styled.div`
   font-size: 18px;
   font-weight: 550;
   cursor: pointer;
+  ${props => props.done &&
+    css`
+      color: #db5025;
+      text-decoration: line-through;
+    `
+  }
 `;
+
 
 const Checkbox = styled.div`
   display: flex;
@@ -61,6 +68,7 @@ function NoteListItem(props) {
         {done ? <VscThumbsupFilled /> : <VscThumbsup />}
       </Checkbox>
       <Text
+        done={done}
         onClick={() => {onTextToggle()}}
         // onClick={() => {handleClick}}
         // onClick2={() => showText}

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { VscChromeClose, VscCheck } from "react-icons/vsc";
+import { useRef } from "react";
 
 const Background = styled.div`
   position: fixed;
@@ -21,10 +22,13 @@ const NoteEditWarpper = styled.div`
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   overflow-y: auto;
+  padding: 10px;
+  border: 2px solid black;
 
   .header {
     display: flex;
     justify-content: flex-end;
+    border-bottom: 2px solid black;
   }
 
   svg {
@@ -35,13 +39,12 @@ const NoteEditWarpper = styled.div`
 
 const Body = styled.div`
   width: 30px;
-  display: flex;
-  justify-content: space-between;
 `;
 
 function NoteEdit(props) {
   const { children, offClose, onInput } = props;
 
+  
   return (
     <Background>
       <NoteEditWarpper>

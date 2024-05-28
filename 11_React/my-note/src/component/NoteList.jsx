@@ -31,19 +31,17 @@ function NoteList(props) {
   return (
     <NoteListWrapper>
 
-      <Title>할 부위</Title>
+      <Title>남은 부위🔥</Title>
       {falseTodos.map((todo) => {
-        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
-        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} offClose={offClose} showText={showText}/>;
+        return <NoteListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
+        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} offClose={offClose}/>;
       })}
-      <Title>완료 부위</Title>
+      {showText}
+      <Title>완료 부위💧</Title>
       {trueTodos.map((todo) => {
-        return <NoteListItem ket={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
-        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} onInput={onInput} showText={showText}/>;
+        return <NoteListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
+        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} onInput={onInput}/>;
       })}
-
-      {/* <NoteListInfo /> */}
-      {/* <Outlet /> */}
 
     </NoteListWrapper>
   );

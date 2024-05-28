@@ -41,16 +41,26 @@ const Content = styled.div`
   background: white;
 `;
 
+const CustomDate = () => {
+  const today = new Date();
+  const formattedDate = `${today.getMonth() + 1}월 ${today.getDate()}일`;
+
+  return(
+    <div>
+      {formattedDate}
+    </div>);
+};
 
 
 function NoteMain(props) {
   const { children } = props
+  
 
   return (
     <>
       <Header>You can do it🏋️‍♂️</Header>
       <NoteMainWarpper>
-        <Title>주 단위 운동 스케줄</Title>
+        <Title>운동 스케줄&nbsp;<CustomDate /></Title>
         <Content>{children}</Content>
         {/* <NoteInput /> */}
       </NoteMainWarpper>

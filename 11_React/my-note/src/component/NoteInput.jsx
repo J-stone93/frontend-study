@@ -6,6 +6,8 @@ import { useState } from "react";
 const Wrapper = styled.form`
   display: flex;
   background: #acafb3;
+  font-family: "온글잎 류뚱체";
+
 `;
 
 const Input = styled.input`
@@ -52,6 +54,7 @@ function NoteInput(props) {
     onInsert(value);
     setValue('');
   };
+
 
   return (
     <Wrapper onSubmit={handleSubmit}>

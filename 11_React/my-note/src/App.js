@@ -12,6 +12,7 @@ import NoteEdit from './component/NoteEdit';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NoteListInfo from './component/NoteListInfo';
 
+
 const GlobalStyle = createGlobalStyle`
   /* reset css */
   ${reset}
@@ -19,8 +20,16 @@ const GlobalStyle = createGlobalStyle`
   /* 글로벌(공통) 스타일 */
   body {
     background: #e6e9ed;
+    font-family: "온글잎 류뚱체";
+    font-weight: bold;
   }
+
+* {
+  font-family: "온글잎 류뚱체";
+  font-size: 25px;
+}
 `;
+
 
 
 
@@ -99,9 +108,17 @@ function App() {
   // 텍스트창
   const [showText, setShowText] = useState(false);
 
-  const handleTextToggle = (id) => {
+  const handleTextToggle = () => {
     setShowText(!showText);
   };
+
+  const handleInfo = (textarea) => {
+    const todo ={
+      id: uuidv4(),
+      textarea
+    }
+    setTodos(todos.push(todo));
+  }
 
   // 로컬 스토리지에서 가져오기
   useEffect(() => {
@@ -112,6 +129,7 @@ function App() {
   useEffect(() => {  
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
+
 
   return (
     <>
@@ -128,18 +146,17 @@ function App() {
           onTextToggle={handleTextToggle}
           offClose={handleClose}
           onInput={handleInput}
-          showText={showText}
-        >
-        </NoteList>
-      {showText &&
+          showText={showText &&
         <NoteListInfo
           offClose={handleClose}
           onInput={handleInput}
-          onInsert={handleInsert}
+          onInfo={handleInfo}
           todos={todos}
         >
         </NoteListInfo>
       }
+        >
+        </NoteList>
       </NoteMain>
 
       {showNoteEdit &&
