@@ -57,33 +57,32 @@ const Edit = styled.div`
 function NoteListItem(props) {
   const { todo: { id, text, done }, onRemove, onToggle, onEdit, onClick, onTextToggle, showText, offClose, onInput } = props;
 
-  // const handleClick = () => {
-  //   onTextToggle(id)
-  //   {showText}
-  // }
+
 
   return (
-    <NoteListItemWrapper>
-      <Checkbox done={done} onClick={() => onToggle(id)}>
-        {done ? <VscThumbsupFilled /> : <VscThumbsup />}
-      </Checkbox>
-      <Text
-        done={done}
-        onClick={() => {onTextToggle()}}
-        // onClick={() => {handleClick}}
-        // onClick2={() => showText}
+    <>
+      <NoteListItemWrapper>
+        <Checkbox done={done} onClick={() => onToggle(id)}>
+          {done ? <VscThumbsupFilled /> : <VscThumbsup />}
+        </Checkbox>
+        <Text
+          done={done}
+          onClick={() => { onTextToggle() }}
         >
           {text}</Text>
-          {/* {showText ?  <NoteListInfo /> : null} */}
-      <Edit onClick={() => onEdit(id)}>
-        <VscEdit />
-      </Edit>
-      <Remove onClick={() => {
-        onRemove(id);
-      }}>
-        <VscTrash />
-      </Remove>
-    </NoteListItemWrapper>
+        {/* <NoteListInfo /> */}
+        <Edit onClick={() => onEdit(id)}>
+          <VscEdit />
+        </Edit>
+        <Remove onClick={() => {
+          onRemove(id);
+        }}>
+          <VscTrash />
+        </Remove>
+        {/* {showText} */}
+      </NoteListItemWrapper>
+
+    </>
 
   );
 };

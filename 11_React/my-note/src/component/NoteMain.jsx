@@ -62,7 +62,6 @@ function NoteMain(props) {
       <NoteMainWarpper>
         <Title>운동 스케줄&nbsp;<CustomDate /></Title>
         <Content>{children}</Content>
-        {/* <NoteInput /> */}
       </NoteMainWarpper>
 
     </>

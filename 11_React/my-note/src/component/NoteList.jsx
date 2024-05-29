@@ -23,7 +23,7 @@ const Title = styled.h1`
 `;
 
 function NoteList(props) {
-  const { todos, onRemove, onToggle, onEdit, onClick, onTextToggle, offClose, onInput, showText } = props
+  const { todos, onRemove, onToggle, onEdit, onClick, onTextToggle, offClose, showText } = props
 
   const falseTodos = todos.filter((todo) => !todo.done);
   const trueTodos = todos.filter((todo) => todo.done);
@@ -34,13 +34,13 @@ function NoteList(props) {
       <Title>남은 부위🔥</Title>
       {falseTodos.map((todo) => {
         return <NoteListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
-        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} offClose={offClose}/>;
+        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} offClose={offClose} showText={showText}/>;
       })}
       {showText}
       <Title>완료 부위💧</Title>
       {trueTodos.map((todo) => {
         return <NoteListItem key={todo.id} todo={todo} onRemove={onRemove} onToggle={onToggle}
-        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} onInput={onInput}/>;
+        onEdit={onEdit} onClick={onClick} onTextToggle={onTextToggle} />;
       })}
 
     </NoteListWrapper>

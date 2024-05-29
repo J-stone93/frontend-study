@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FiPlusCircle } from "react-icons/fi";
 import { FaPlusCircle } from "react-icons/fa";
 import { useState } from "react";
+import NoteModal from "./NoteModal";
 
 const Wrapper = styled.form`
   display: flex;
@@ -41,19 +42,30 @@ const Button = styled.button`
 `;
 
 function NoteInput(props) {
-  const { onInsert } = props;
+  const { onInsert, onModal } = props;
 
   const [value, setValue] = useState('');
+  
+  const [showModal, setShowModal] = useState(false);
+
+  // const handleOnModal = () => setShowModal(true);
+  const handleOffModal = () => setShowModal(false);
 
   const handleChange = (e) => {
     setValue(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    onInsert(value);
-    setValue('');
+    if(!value) {
+      setShowModal(true);
+      e.preventDefault();
+    } else {
+      e.preventDefault();
+      onInsert(value);
+      setValue('');
+    }
   };
+
 
 
   return (
@@ -66,9 +78,14 @@ function NoteInput(props) {
       />
       <Button 
       type="submit"
-      disabled={!value}>
+      // onClick={handleSubmit}
+      // disabled={value === null}
+      >
       <FiPlusCircle />
       </Button>
+      {showModal &&
+        <NoteModal offModal={handleOffModal} />
+      }
     </Wrapper>
   );
 };

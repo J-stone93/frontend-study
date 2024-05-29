@@ -3,7 +3,6 @@ import './App.css';
 import NoteMain from './component/NoteMain';
 import { createGlobalStyle } from "styled-components";
 import reset, { Reset } from "styled-reset";
-import styled from "styled-components";
 import { useState, useRef, useEffect } from 'react';
 import NoteInput from './component/NoteInput';
 import NoteList from './component/NoteList';
@@ -11,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import NoteEdit from './component/NoteEdit';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NoteListInfo from './component/NoteListInfo';
+import NoteModal from './component/NoteModal';
 
 
 const GlobalStyle = createGlobalStyle`
@@ -39,7 +39,13 @@ function App() {
     // {
     //   id: 1,
     //   text: "하체",
-    //   done: false
+    //   done: false,
+    //   detail: [
+    //     {
+    //       id: 1,
+    //       text:
+    //     }
+    //   ]
     // },
     // {
     //   id: 2,
@@ -61,7 +67,7 @@ function App() {
   const [showNoteEdit, setShowNoteEdit] = useState(false);
   const [editTodo, setEditTodo] = useState({});
 
-  
+
   const handleChange = (e) => {
     setEditTodo({
       ...editTodo,
@@ -79,9 +85,9 @@ function App() {
     setTodos(todos.map(todo => todo.id === editTodo.id ? editTodo : todo));
     handleClose();
   };
-  
+
   const nextId = useRef(5);
-  
+
   const handleInsert = (text) => {
     const todo = {
       // id: nextId.current,
@@ -92,7 +98,7 @@ function App() {
     setTodos(todos.concat(todo));
     nextId.current += 1;
   };
-  
+
   const handleToggle = (id) => {
     setTodos(todos.map((todo) => todo.id === id ? { ...todo, done: !todo.done } : todo));
   };
@@ -100,11 +106,11 @@ function App() {
   const handleRemove = (id) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
-  
+
   const handleClick = () => {
     setShowText(true);
   };
-  
+
   // 텍스트창
   const [showText, setShowText] = useState(false);
 
@@ -113,7 +119,7 @@ function App() {
   };
 
   const handleInfo = (textarea) => {
-    const todo ={
+    const todo = {
       id: uuidv4(),
       textarea
     }
@@ -126,17 +132,23 @@ function App() {
     setTodos(dbTodos);
   }, []);
 
-  useEffect(() => {  
+  useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
+  // 빈값 입력시 모달
+
+  // const [showModal, setShowModal] = useState(true);
+
+  // const handleOnModal = () => setShowModal(true);
+  // const handleOffModal = () => setShowModal(false);
 
   return (
     <>
       <Reset />
       <GlobalStyle />
       <NoteMain>
-        <NoteInput onInsert={handleInsert} />
+        <NoteInput onInsert={handleInsert}/>
         <NoteList
           todos={todos}
           onEdit={handleEdit}
@@ -147,14 +159,7 @@ function App() {
           offClose={handleClose}
           onInput={handleInput}
           showText={showText &&
-        <NoteListInfo
-          offClose={handleClose}
-          onInput={handleInput}
-          onInfo={handleInfo}
-          todos={todos}
-        >
-        </NoteListInfo>
-      }
+            <NoteListInfo onInfo={handleInfo} todos={todos} />}
         >
         </NoteList>
       </NoteMain>
@@ -169,10 +174,15 @@ function App() {
         </NoteEdit>
       }
 
+      {/* {showModal &&
+        <NoteModal offModal={handleOffModal}/>
+      } */}
+
       {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<NoteMain />}>
             <Route path='detail' element={<NoteListInfo />}></Route>
+            <Route path='' element></Route>
           </Route>
         </Routes>
       </BrowserRouter> */}

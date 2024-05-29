@@ -37,7 +37,7 @@ const Button = styled.button`
 
 
 function NoteListInfo(props) {
-  const { todos: { id, text, done },onInfo } = props;
+  const { todos: { id, text, done }, onInfo } = props;
 
   const [value, setValue] = useState('');
 
@@ -47,21 +47,30 @@ function NoteListInfo(props) {
   };
 
   const handleCilck = (e) => {
-    e.preventDefault();
+    console.log(22222);
     const newText = value.replace("\r\n", "br");
     // onInsert(newText);
     setValue('');
     // onInfo(value);
   };
 
+  const handleSubmit = (e) => {
+    console.log(1111);
+    e.preventDefault();
+    onInfo(value);
+  }
+
   return (
-    <Background>
+    <Background
+      onSubmit={handleSubmit}
+    >
       <Input
         onChange={handleChange}
         value={value}
         placeholder="루틴을 입력하세요"
       />
       <Button
+        type="submit"
         onClick={handleCilck}
       ><FiPlusCircle /></Button>
     </Background>
