@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <h1 id="demo1"></h1>
 
@@ -142,11 +144,11 @@
     };
 
     // step1~5까지 비동기 함수들이 비동기적으로 실행
-    step1('초기값', () => {});
-    step2('값1', () => {});
-    step3('값2', () => {});
-    step4('값3', () => {});
-    step5('값4', () => {});
+    step1('초기값', () => { });
+    step2('값1', () => { });
+    step3('값2', () => { });
+    step4('값3', () => { });
+    step5('값4', () => { });
 
     // step1~5까지 비동기 함수들이 동기적으로 실행되려면 아래와 같이 작성
     step1('초기값', (value1) => {
@@ -178,7 +180,7 @@
       setTimeout(() => {
         if (userId === 'jang') {
           // 권한을 가져오는 작업을 하고 받아온 권한 정보를 콜백 함수에 전달함
-          onSuccess({ name: 'ws Jnag', role: 'admin'});
+          onSuccess({ name: 'ws Jnag', role: 'admin' });
         } else {
           onError(new Error('접근 권한 없음'));
         }
@@ -204,4 +206,5 @@
     // 2) 디버깅, 유지보수가 힘들다.
   </script>
 </body>
+
 </html>
