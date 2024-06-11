@@ -4,6 +4,7 @@ import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
+import ProductDetail from "./pages/ProductDetail";
 
 // 글로벌(공통) 스타일 설정
 const GlobalStyle = createGlobalStyle`
@@ -21,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
-  .curosr-pointer {
+  .cursor-pointer {
     cursor: pointer;
   }
 `;
@@ -41,11 +42,16 @@ function App() {
 
       {/* Quiz: Layout 컴포넌트로 추출 및 Nested Route 구성해보기 */}
       <Routes>
-        <Route path="/" element={<Layout />} >
+        <Route path='/' element={<Layout />} >
           {/* index: index route(여기서는 기본 자식 라우트를 의미) */}
-          <Route index element={<Main />}/>
+          <Route index element={<Main />} />
+          {/* <Route path="detail" element={<ProductDetail />}/> */}
+          {/* Quiz: 상품별 상세페이지 여러 개를 라우팅 하려면? URL 파라미터 사용
+            예: /detail/1로 접속하면 productId에 1이 담기도록 설정
+            */}
+          <Route path='detail/:productId' element={<ProductDetail />} />
         </Route>
-        
+
       </Routes>
 
 
