@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 // App.css, index.css 삭제 인포트도 삭제
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer, ToastContainer2 } from "react-toastify";
+
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
 import ProductDetail from "./pages/ProductDetail";
@@ -54,6 +56,22 @@ function App() {
 
       </Routes>
 
+      {/* 토스트 컨테이너 하나로 재사용
+        만약 다른 옵션의 토스트를 쓰고 싶다면 컨테이너 여러 개 사용 */}
+      <ToastContainer 
+        containerId="A"
+        position="bottom-right"
+        autoClose={3000}
+        pauseOnFocusLoss={false}
+        theme="dark"
+      />
+      <ToastContainer
+        containerId="B"
+        position="top-right"
+        autoClose={3000}
+        pauseOnFocusLoss={false}
+        theme="light"
+      />
 
     </>
   );

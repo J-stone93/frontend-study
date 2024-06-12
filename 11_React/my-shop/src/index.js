@@ -7,7 +7,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './app/store';
 
+// https://react-bootstrap.netlify.app/
 import 'bootstrap/dist/css/bootstrap.min.css'; // bootstrap CSS추가 꼭 임포트해줘야 스타일 적용 됨
+// https://fkhadra.github.io/react-toastify/installation
+import 'react-toastify/dist/ReactToastify.min.css'; // ReactToastify CSS추가
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
