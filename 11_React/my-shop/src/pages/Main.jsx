@@ -96,6 +96,7 @@ function Main() {
 
             {/* 로딩 만들기 */}
             {/* https://www.davidhu.io/react-spinners/storybook/?path=/docs/barloader--main */}
+            {/* https://www.npmjs.com/package/react-spinners */}
             {status === 'loading' &&
               <SyncLoader
                 color="#36d7b7"
