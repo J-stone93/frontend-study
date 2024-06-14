@@ -26,20 +26,21 @@ const cartSlice = createSlice({
     // 수량을 변경하는 리듀서 만들기
     // Quiz: 전달받은 상품의 id값으로 cartList에서 해당 상품을 찾아 수량을 1씩 증가/감소
     increasCount:(state, action) => {
-      const s = state.cartList.find((cartItem) => {
-        cartItem.id === action.payload
-        s.count -1
-      });
-
+      const targetItem = state.cartList.find(cartItem => cartItem.id === action.payload);
+      targetItem.count ++;
     },
-    decreasCount:() => {
-
+    decreasCount:(state, { payload: productid }) => {
+      const targetItem = state.cartList.find(cartItem => cartItem.id === productid);
+      targetItem.count --;
     }
   }
 });
 
 // action 생성 함수들
-export const { increasCount, decreasCount } = cartSlice.actions;
+export const { 
+  increasCount,
+  decreasCount 
+} = cartSlice.actions;
 
 // 선택자 함수들
 export const selectCartList = state => state.cart.cartList;

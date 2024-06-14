@@ -37,18 +37,18 @@ function Cart() {
               <td>{cartItem.title}</td>
               <td>
                 <button
-                  onClick={dispatch(increasCount(cartItem.id))}
+                  onClick={() => dispatch(decreasCount(cartItem.id))}
                 >
                   -
                 </button>
                 {cartItem.count}
                 <button
-                  onClick={dispatch(decreasCount(cartItem.id))}
+                  onClick={() => dispatch(increasCount(cartItem.id))}
                 >
                   +
                 </button>
               </td>
-              <td>{formatter.format(cartItem.price)}원</td>
+              <td>{formatter.format(cartItem.price * cartItem.count)}원</td>
             </tr>
           )}
         </tbody>
