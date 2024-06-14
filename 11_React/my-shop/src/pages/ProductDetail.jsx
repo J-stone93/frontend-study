@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Nav, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearSelectedProduct, getSelectedProduct, selectSelectedProduct } from "../features/product/productSlice";
 import styled, { keyframes } from "styled-components";
 import { toast } from "react-toastify";
+import TabContents from "../components/TabContents";
 
 // 스타일드 컴포넌트를 이용한 애니메이션 속성 적용
 const highlight = keyframes`
@@ -27,6 +28,8 @@ function ProductDetail() {
 
   const [alert, setAlert] = useState(true); // 상세정보 Alert 창 상태
   const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
+  const [currentTabIndex, setCurrentTabIndex] = useState(0); // 현재 탭 상태
+  const [currentTab, setCurrentTab] = useState('detail');
 
 
   // 숫자 포맷 적용
@@ -68,7 +71,7 @@ function ProductDetail() {
   const handleChangeOrderCount = (e) => {
     // 숫자 외 입력 시 유효성 검사 후 경고 토스트 띄우기
     if (isNaN(e.target.value)) {
-      toast.error('숫자만 입력하세요!', {containerId: "B"});
+      toast.error('숫자만 입력하세요!', { containerId: "B" });
       return;
     }
 
@@ -104,12 +107,66 @@ function ProductDetail() {
 
           <Col md={4} className="m-auto mb-3">
             {/* Quiz: text input을 제어 컴포넌트로 만들기 */}
-            <Form.Control type="text" value={orderCount} onChange={handleChangeOrderCount}/>
+            <Form.Control type="text" value={orderCount} onChange={handleChangeOrderCount} />
           </Col>
 
           <Button variant="primary">주문하기</Button>
         </Col>
       </Row>
+
+      {/* 탭 버튼 UI */}
+      {/* defaultActiveKey: 기본으로 active 할 탭 지정, active 클래스가 들어가 있음  */}
+      <Nav variant="tabs" defaultActiveKey="link-0" className="my-3">
+        <Nav.Item>
+          {/* <Nav.Link eventKey="link-0" onClick={() => setCurrentTabIndex(0)}>상세정보</Nav.Link> */}
+          <Nav.Link eventKey="link-0" onClick={() => setCurrentTab('detail')}>상세정보</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          {/* <Nav.Link eventKey="link-1" onClick={() => setCurrentTabIndex(1)}>리뷰</Nav.Link> */}
+          <Nav.Link eventKey="link-1" onClick={() => setCurrentTab('review')}>리뷰</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          {/* <Nav.Link eventKey="link-2" onClick={() => setCurrentTabIndex(2)}>O&amp;A</Nav.Link> */}
+          <Nav.Link eventKey="link-2" onClick={() => setCurrentTab('qa')}>O&amp;A</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          {/* <Nav.Link eventKey="link-3" onClick={() => setCurrentTabIndex(3)}>반품/교환정보</Nav.Link> */}
+          <Nav.Link eventKey="link-3" onClick={() => setCurrentTab('exchange')}>반품/교환정보</Nav.Link>
+        </Nav.Item>
+      </Nav>
+
+      {/* 탭의 내용을 다 만들어 놓고 조건부 렌더링하면 됨 */}
+      {/* 방법1: 삼항 연산자 사용(가독성 나쁨) */}
+      {/* {currentTabIndex === 0 
+        ? <div>탭 내용1</div> 
+        : currentTabIndex === 1
+          ? <div>탭 내용2</div>
+          : currentTabIndex === 2
+            ? <div>탭 내용3</div>
+            : currentTabIndex === 3
+              ? <div>탭 내용4</div>
+              : null
+      } */}
+
+      {/* 방법2: 컴포넌트로 추출(가독성 개선) */}
+      {/* <TabContents currentTabIndex={currentTabIndex}/> */}
+
+      {/* 방법3(편법): 배열이나 객체 형태로 만들어서 조건부 렌더링 */}
+      {/* 배열 형태 */}
+      {/* {[
+        <div>탭 내용1</div>,
+        <div>탭 내용2</div>,
+        <div>탭 내용3</div>,
+        <div>탭 내용4</div>
+      ][currentTabIndex]} */}
+
+      {/* Quiz: 객체 형태 */}
+      {{
+        'detail': <div>탭 내용1</div>,
+        'review': <div>탭 내용2</div>,
+        'qa': <div>탭 내용3</div>,
+        'exchange': <div>탭 내용4</div>
+      }[currentTab]}
     </Container>
   );
 };
