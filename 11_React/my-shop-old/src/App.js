@@ -1,7 +1,8 @@
 import { createGlobalStyle } from "styled-components";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Route, Routes, useParams } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+// App.css, index.css 삭제 인포트도 삭제
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Route, Routes } from "react-router-dom";
+import { ToastContainer, ToastContainer2 } from "react-toastify";
 
 import Layout from "./pages/Layout";
 import Main from "./pages/Main";
@@ -10,6 +11,8 @@ import Cart from "./pages/Cart";
 
 // 글로벌(공통) 스타일 설정
 const GlobalStyle = createGlobalStyle`
+
+
   body {
     box-sizing: border-box;
   }
@@ -18,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
-  #root {
+  #root { // 예제를 위해 모든 인라인 요소 가운데 정렬 실제로는 이렇게 사용 안함
     text-align: center;
   }
 
@@ -37,30 +40,41 @@ function App() {
       {/* <button type="button" className="btn btn-primary">Primary</button> */}
 
       <GlobalStyle />
-      
-      {/* Quiz: 헤더를 Layout 컴포넌트로 추출 및 Nested Route 구성해보기 */}
 
+      {/* 헤더 영역: 상단 내비게이션 바 */}
+
+      {/* Quiz: Layout 컴포넌트로 추출 및 Nested Route 구성해보기 */}
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path='/' element={<Layout />} >
           {/* index: index route(여기서는 기본 자식 라우트를 의미) */}
           <Route index element={<Main />} />
-          {/* <Route path="detail" element={<ProductDetail />} /> */}
-          {/* Quiz: 상품별 상세페이지 여러 개를 라우팅하려면? URL 파라미터 사용
-            예: /detail/1로 접속하면 productId에 1이 담기도록 설정 */}
-          <Route path="detail/:productId" element={<ProductDetail />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="*" element={<div>페이지가 존재하지 않습니다.</div>} />
+          {/* <Route path="detail" element={<ProductDetail />}/> */}
+          {/* Quiz: 상품별 상세페이지 여러 개를 라우팅 하려면? URL 파라미터 사용
+            예: /detail/1로 접속하면 productId에 1이 담기도록 설정
+            */}
+          <Route path='detail/:productId' element={<ProductDetail />} />
+          <Route path= 'cart' element={<Cart />}/>
+          <Route path= '*' element={<div>페이지가 존재하지 않습니다.</div>}/>
         </Route>
       </Routes>
 
       {/* 토스트 컨테이너 하나로 재사용
         만약 다른 옵션의 토스트를 쓰고 싶다면 컨테이너 여러 개 사용 */}
       <ToastContainer 
+        containerId="A"
         position="bottom-right"
         autoClose={3000}
         pauseOnFocusLoss={false}
         theme="dark"
       />
+      <ToastContainer
+        containerId="B"
+        position="top-right"
+        autoClose={3000}
+        pauseOnFocusLoss={false}
+        theme="light"
+      />
+
     </>
   );
 }

@@ -1,14 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Alert, Button, Col, Container, Form, Modal, Nav, Row } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Nav, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
 import { clearSelectedProduct, getSelectedProduct, selectSelectedProduct } from "../features/product/productSlice";
 import { toast } from "react-toastify";
 import TabContents from "../components/TabContents";
-import { addItemTocart } from "../features/cart/cartSlice";
 
 // 스타일드 컴포넌트를 이용한 애니메이션 속성 적용
 const highlight = keyframes`
@@ -31,12 +30,7 @@ function ProductDetail() {
   const [orderCount, setOrderCount] = useState(1); // 주문수량 상태
   const [currentTabIndex, setCurrentTabIndex] = useState(0); // 현재 탭 상태
   const [currentTab, setCurrentTab] = useState('detail'); // 현재 탭 상태
-  const [showModal, setShowModal] = useState(false); // 모달 상태
-  const handleCloseModal = () => setShowModal(false);
-  const handleOpenModal = () => setShowModal(true);
-  const navigate = useNavigate();
 
-  // const productInfo = { ...product , orderCount}
   // 처음 마운트 됐을 때 서버에 상품 id를 이용하여 데이터를 요청하고
   // 그 결과를 리덕스 스토어에 저장
   useEffect(() => {
@@ -62,7 +56,7 @@ function ProductDetail() {
     const timeout = setTimeout(() => {
       setShowInfo(false);
     }, 3000);
-
+    
     // 불필요하게 타이머가 계속 쌓이는 것을 정리
     return () => {
       clearTimeout(timeout);
@@ -78,24 +72,6 @@ function ProductDetail() {
 
     setOrderCount(Number(e.target.value));
   };
-
-  const handleClickCart = () => {
-    // 상품 정보 + 주문수량도 같이 전달
-    // 객체 형태로 여러 데이터 전달하기
-    // dispatch(addItemTocart({
-    //   id: product.id,
-    //   title: product.title,
-    //   price: product.price,
-    //   count: orderCount
-    // }));
-    dispatch(addItemTocart({
-      ...product,
-      count: orderCount
-    }));
-
-    handleOpenModal();
-  };
-
 
   if (!product) {
     return null;
@@ -127,17 +103,10 @@ function ProductDetail() {
 
           <Col md={4} className="m-auto mb-3">
             {/* Quiz: text input을 제어 컴포넌트로 만들기 */}
-            <Form.Control type="text" value={orderCount} onChange={handleChangeOrderCount} />
+            <Form.Control type="text" value={orderCount} onChange={handleChangeOrderCount}  />
           </Col>
 
           <Button variant="primary">주문하기</Button>
-          <Button
-            variant="warning"
-            // onClick={() => dispatch(addItemTocart({...product , orderCount}))}
-            onClick={handleClickCart}
-          >
-            장바구니
-          </Button>
         </Col>
       </Row>
 
@@ -164,7 +133,7 @@ function ProductDetail() {
 
       {/* 탭의 내용을 다 만들어 놓고 조건부 렌더링하면 됨 */}
       {/* 방법1: 삼항 연산자 사용(가독성 나쁨) */}
-      {currentTabIndex === 0
+      {currentTabIndex === 0 
         ? <div>탭 내용1</div>
         : currentTabIndex === 1
           ? <div>탭 내용2</div>
@@ -194,26 +163,6 @@ function ProductDetail() {
         'qa': <div>탭 내용3</div>,
         'exchange': <div>탭 내용4</div>
       }[currentTab]}
-
-      {/* 장바구니 모달 => 추후 범용적인 공통 모달로 만들고 구체화하여 사용하는 것이 좋음 */}
-      <Modal show={showModal} onHide={handleCloseModal} backdrop="static">
-        <Modal.Header closeButton>
-          <Modal.Title>🚨J-stone93 알림🚨</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          장바구니에 상품을 담았습니다.<br />
-          장바구니로 이동하시겠습니다?  
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            취소
-          </Button>
-          <Button variant="primary" onClick={() => navigate('/cart')}>
-            확인
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
     </Container>
   );
 };

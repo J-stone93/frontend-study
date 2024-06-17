@@ -1,11 +1,11 @@
-import { useDebugValue, useEffect } from "react";
 import styled from "styled-components";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { PulseLoader } from "react-spinners";
+import { SyncLoader } from "react-spinners";
 
-import { addMoreProducts, getAllProducts, getMoreProductsAsync, selectProductList, selectStatus } from "../features/product/productSlice";
+import { addMoreProducts, getAllProducts, selectProductList, selectAddProductList, getMoreProductsAsync, selectStatus } from "../features/product/productSlice";
 import ProductListItem from "../components/ProductListItem";
 
 // 리액트(JS)에서 이미지 파일 가져오기
@@ -27,30 +27,33 @@ const MainBackground = styled.div`
 
 function Main() {
   const dispatch = useDispatch();
-  const productList = useSelector(selectProductList);
+  const productList = useSelector(selectProductList); // 함수 실행 결과가 아니라 함수 자체를 넣어줌
   const status = useSelector(selectStatus); // API 요청 상태(로딩 상태)
 
   // 처음 마운트 됐을 때 서버에 상품 목록 데이터를 요청하고
   // 그 결과를 리덕스 스토어에 전역 상태로 저장
   useEffect(() => {
     // 서버에 상품 목록 요청
-    axios.get('https://my-json-server.typicode.com/geoblo/db-shop/products')
-      .then((response) => {
-        console.log(response.data);
-        dispatch(getAllProducts(response.data));
+    axios.get('https://my-json-server.typicode.com/J-stone93/my-shop/products')
+      .then((respones) => {
+        console.log(respones.data);
+        dispatch(getAllProducts(respones.data));
       })
       .catch((err) => {
         console.error(err);
       });
   }, []);
 
+  // api.js에서 axios로 풀러온 데이터를 가져다 쓰기
   const handleGetMoreProducts = async () => {
     const result = await getMoreProducts();
+    console.log(result);
     dispatch(addMoreProducts(result));
-  };
 
-  const handleGetMoreProductsAsync = () => {
+  };
+  const handleGetMoreProductsAsync = async () => {
     dispatch(getMoreProductsAsync());
+
   };
 
   return (
@@ -64,44 +67,65 @@ function Main() {
       <section>
         <Container>
           <Row>
-            {/* 부트스트랩 이용한 반응형 작업 */}
+            {/* 부트스트랩 이용한 반응형 작업(Container와 Row컬럼 밑에서만 사용가능) */}
             {/* md >= 768px 이상에서 전체 12등분 중 4:4:4로 보여줌 */}
+            {/* <Col md={4} sm={6}>
+              <img src="https://www.yonexmall.com/shop/data/goods/1645767865278s0.png" width="80%" />
+              <h4>상품명</h4>
+              <p>상품가격</p>
+            </Col>
+            <Col md={4} sm={6}>
+              <img src="https://www.yonexmall.com/shop/data/goods/1659329583483s0.png" width="80%" />
+              <h4>상품명</h4>
+              <p>상품가격</p>
+            </Col>
+            <Col md={4} sm={6}>
+              <img src="https://www.yonexmall.com/shop/data/goods/1667190100104s0.png" width="80%" />
+              <h4>상품명</h4>
+              <p>상품가격</p>
+            </Col> */}
+
             {/* ProductListItem 컴포넌트를 만들어서 반복 렌더링으로 바꾸고 데이터 바인딩 */}
             {/* Quiz: 
               1) 반복적인 상품 아이템을 src/components/ProductListItem 컴포넌트로 만들기
               2) productList 배열을 반복하며 ProductListItem 컴포넌트를 렌더링 하기
               3) 상품 정보를 props로 넘겨서 데이터 바인딩 하기
             */}
-            {productList.map((product) => <ProductListItem key={product.id} product={product} />)}
+
+            {productList.map(product => <ProductListItem key={product.id} product={product} />)}
 
             {/* 로딩 만들기 */}
+            {/* https://www.davidhu.io/react-spinners/storybook/?path=/docs/barloader--main */}
+            {/* https://www.npmjs.com/package/react-spinners */}
             {status === 'loading' &&
-              <PulseLoader
+              <SyncLoader
                 color="#36d7b7"
                 margin={50}
                 size={30}
-                cssOverride={{
+                cssOverride= {{
                   display: 'block'
                 }}
               />
+              
             }
-          </Row>
-        </Container>
+        </Row>
+      </Container>
 
-        {/* 상품 더보기 기능 만들기
+      {/* 상품 더보기 기능 만들기
           더보기 버튼 클릭 시 axios를 사용하여 데이터 요청
-          받아온 결과를 전역 상태에 추가하기 위해 리듀서 추가 및 액션 생성 함수 export
-          스토어에 dispatch로 요청(액션) 보내기
+          받아온 결과를 전역 상태에 추가하기 위해 리듀서(전역상태 변경을 위해) 추가 및 생성 함수 export
+          store에 dispatch로 요청(액션) 보내기
         */}
-        <Button variant="secondary" className="mb-4" onClick={handleGetMoreProducts}>
-          더보기
-        </Button>
+      <Button variant="secondary" className="mb-4" onClick={handleGetMoreProducts}>
+        더보기
+      </Button>
 
-        {/* thunk를 이용한 비동기 작업 처리하기 */}
-        <Button variant="secondary" className="mb-4" onClick={handleGetMoreProductsAsync}>
-          더보기 {status}
-        </Button>
-      </section>
+      {/* thunk를 이용한 비동기 작업 처리하기 */}
+      <Button variant="secondary" className="mb-4" onClick={handleGetMoreProductsAsync}>
+        더보기 {status}
+      </Button>
+
+    </section >
     </>
   );
 };
@@ -118,7 +142,7 @@ export default Main;
 // json-server 사용법
 // ./src/data.json 이라는 파일을 작성
 // npx json-server ./src/data.json --port 4000
-// 또는 
+// 또는
 // npm i -g json-server
 // json-server --watch ./src/data.json --port 4000
 

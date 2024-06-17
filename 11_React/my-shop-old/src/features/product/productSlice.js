@@ -31,7 +31,7 @@ const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    getAllProducts: (state, action) => {
+    getAllProducts: (state, action) => { // 여기서 state는 위에 productList: []를 갖고옴
       state.productList = action.payload;
     },
     getSelectedProduct: (state, action) => {
@@ -41,6 +41,9 @@ const productSlice = createSlice({
       state.selectedProduct = null;
     },
     addMoreProducts: (state, action) => {      
+      // (action.payload).map(product => state.productList.push(product));
+      // state.productList = state.productList.push(...action.payload);
+      // 위에 코드 state.productList에 push함수의 실행값(배열의길이)가 들어가게 되는거라 안됨
       state.productList.push(...action.payload);
     },
   },
@@ -68,7 +71,7 @@ export const {
   addMoreProducts
 } = productSlice.actions;
 
-// 선택자 함수
+// 선택자 함수 여기에서 state는 전역state 즉 productSlice말고 다른 슬라이스도 포함돼서 state.~해야함
 export const selectProductList = (state) => state.product.productList;
 export const selectSelectedProduct = (state) => state.product.selectedProduct;
 export const selectStatus = (state) => state.product.status;
