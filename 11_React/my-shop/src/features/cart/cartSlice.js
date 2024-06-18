@@ -54,9 +54,6 @@ const cartSlice = createSlice({
       const newCartList = state.cartList.filter(cartItem => cartItem.id !== id);
       state.cartList = newCartList;
     },
-    // totalItemPrice: (state) => {
-    //   state.cartList.reduce((total, product) => total + (product.price * product.count))
-    // },
   }
 });
 
@@ -65,7 +62,6 @@ export const {
   decreaseCount,
   addItemTocart,
   removeItemFromCart,
-  // totalItemPrice
 } = cartSlice.actions;
 
 export const selectCartList = state => state.cart.cartList;

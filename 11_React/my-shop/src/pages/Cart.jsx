@@ -5,7 +5,6 @@ import { decreaseCount, increaseCount, removeItemFromCart, selectCartList, total
 function Cart() {
   const dispatch = useDispatch();
   const cartList = useSelector(selectCartList);
-  // const totalPrice = dispatch(totalItemPrice());
   const formatter = new Intl.NumberFormat('ko-KR');
 
   return (
@@ -52,10 +51,15 @@ function Cart() {
             </tr>
           )}
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
             <td>합계:</td>
+            <td></td>
+            <td></td>
+            <th>
+              {formatter.format(cartList.reduce((prev, cartItem) => {
+                console.log(prev); // 주의: 초기값이 없으면 배열 인덱스 0이 초기값으로 사용됨
+                return prev + (cartItem.price * cartItem.count);
+              }, 0))}원
+            </th>
             <td></td>
           </tr>
         </tbody>
