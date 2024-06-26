@@ -10,6 +10,8 @@ import { toast } from "react-toastify";
 import TabContents from "../components/TabContents";
 import { addItemTocart } from "../features/cart/cartSlice";
 
+import { addProduct } from "../api/productAPI.js";
+
 // 스타일드 컴포넌트를 이용한 애니메이션 속성 적용
 const highlight = keyframes`
   from { background-color: #cff4fc; }
@@ -147,7 +149,7 @@ function ProductDetail() {
             <Form.Control type="text" value={orderCount} onChange={handleChangeOrderCount} />
           </Col>
 
-          <Button variant="primary">주문하기</Button>
+          <Button variant="primary" onClick={addProduct}>주문하기</Button>
           <Button
             variant="warning"
             // onClick={() => dispatch(addItemTocart({...product , orderCount}))}
