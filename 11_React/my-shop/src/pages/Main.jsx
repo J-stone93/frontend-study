@@ -13,6 +13,9 @@ import ProductListItem from "../components/ProductListItem";
 import yonexImg from "../images/yonex.jpg";
 import { getMoreProducts } from "../api/productAPI";
 import RecentProducts from "../components/RecentProducts";
+import { toast } from "react-toastify";
+import { logoutSuccess } from "../features/user/userSlice";
+import { Navigate } from "react-router-dom";
 // 2) public 폴더 안 이미지(root 경로로 바로 접근)
 // 빌드 시 src 폴더에 있는 코드와 파일은 압축이 되지만 public 폴더에 있는 것들은 그대로 보존
 // 이미지 같은 수정이 필요없는 static 파일의 경우 public에 보관하기도 함
@@ -101,6 +104,31 @@ function Main() {
         {/* thunk를 이용한 비동기 작업 처리하기 */}
         <Button variant="secondary" className="mb-4" onClick={handleGetMoreProductsAsync}>
           더보기 {status}
+        </Button>
+
+        {/* (테스트용) 게시물 목록 조회 */}
+        <Button variant="secondary" className="mb-4" onClick={async () => {
+          try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/board/list`, {
+              headers: {
+                Authorization: token
+              }
+            });
+            console.log(response.data);
+          } catch (error) {
+            console.log(error);
+            toast.error(error.response.data.message, {
+              position: 'top-center'
+            });
+
+            if (error.response.data.code === '403') {
+              dispatch(logoutSuccess());
+              Navigate('/login');
+            }
+          }
+        }}>
+          게시물 조회
         </Button>
       </section>
 
